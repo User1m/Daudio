@@ -1,0 +1,6 @@
+framework module Pods_DaudioTests {
+  umbrella header "Pods-DaudioTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
