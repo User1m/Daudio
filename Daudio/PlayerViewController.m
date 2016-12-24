@@ -6,17 +6,18 @@
 //  Copyright © 2016 Claudius Mbemba. All rights reserved.
 //
 
+@import AVFoundation;
+@import MediaPlayer;
 #import "UIColor+Utils.h"
 #import "PlayerViewController.h"
 #import "Session.h"
-@import AVFoundation;
-@import MediaPlayer;
+#import "UIAlertController+Utils.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, SongChoice) {
     firstChoice,
     secondChoice,
     zeroChoice
-} SongChoice;
+};
 
 @interface PlayerViewController () <MPMediaPickerControllerDelegate, UIGestureRecognizerDelegate, AVAudioPlayerDelegate>
 
@@ -142,12 +143,12 @@ typedef enum : NSUInteger {
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    [self alertWithTitle:@"Song Finished" message:[NSString stringWithFormat:@"%@ has finished playing", [[player.url absoluteString] lastPathComponent]] actionHandler:nil];
+    [self presentViewController:[UIAlertController alertWithTitle:@"Song Finished" message:[NSString stringWithFormat:@"%@ has finished playing", [[player.url absoluteString] lastPathComponent]] actionHandler:nil] animated:YES completion:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)willMoveToParentViewController:(UIViewController *)parent {
+    [super willMoveToParentViewController:parent];
     self.session = nil;
-    [super viewDidDisappear:animated];
 }
 
 #pragma mark MPMediaPickerController Delgates
@@ -192,13 +193,5 @@ typedef enum : NSUInteger {
     _selectedAudioChoice = secondChoice;
     [self presentViewController:_mediaPicker animated:YES completion:nil];
 }
-
-- (UIAlertController *)alertWithTitle:(NSString *)title message:(NSString *)message actionHandler:(nullable void(^)())handler {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:handler];
-    [alert addAction:ok];
-    return alert;
-}
-
 
 @end

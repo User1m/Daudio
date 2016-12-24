@@ -21,6 +21,7 @@
 		DC71BC1C1E0EF51100190871 /* SessionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC71BC1B1E0EF51100190871 /* SessionViewController.storyboard */; };
 		DC71BC261E0EF6B200190871 /* UIViewController+Storyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC251E0EF6B200190871 /* UIViewController+Storyboard.m */; };
 		DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */; };
+		DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */; };
 		F84523C184ECA392459EE3B0 /* Pods_Daudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B8EFE7678D6AF2B28B7B1 /* Pods_Daudio.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		DC71BC251E0EF6B200190871 /* UIViewController+Storyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Storyboard.m"; sourceTree = "<group>"; };
 		DC71BC271E0EF9D100190871 /* SessionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionTableViewCell.h; sourceTree = "<group>"; };
 		DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionTableViewCell.m; sourceTree = "<group>"; };
+		DC71BC2A1E0F09D700190871 /* UIAlertController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Utils.h"; sourceTree = "<group>"; };
+		DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Utils.m"; sourceTree = "<group>"; };
 		E1B277DE528EA954F17AEF10 /* Pods-Daudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daudio/Pods-Daudio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,10 +165,10 @@
 		DC71BC121E0EF42500190871 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DC71BBEB1E0E101800190871 /* PlayerViewController.h */,
-				DC71BBEC1E0E101800190871 /* PlayerViewController.m */,
 				DC71BC181E0EF4FC00190871 /* SessionViewController.h */,
 				DC71BC191E0EF4FC00190871 /* SessionViewController.m */,
+				DC71BBEB1E0E101800190871 /* PlayerViewController.h */,
+				DC71BBEC1E0E101800190871 /* PlayerViewController.m */,
 				DC71BC271E0EF9D100190871 /* SessionTableViewCell.h */,
 				DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */,
 			);
@@ -188,6 +191,8 @@
 				DC71BC0F1E0E48BF00190871 /* UIColor+Utils.m */,
 				DC71BC241E0EF6B200190871 /* UIViewController+Storyboard.h */,
 				DC71BC251E0EF6B200190871 /* UIViewController+Storyboard.m */,
+				DC71BC2A1E0F09D700190871 /* UIAlertController+Utils.h */,
+				DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */,
+				DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */,
 				DC71BBED1E0E101800190871 /* PlayerViewController.m in Sources */,
 				DC71BC171E0EF49700190871 /* Session.m in Sources */,
 				DC71BBEA1E0E101800190871 /* AppDelegate.m in Sources */,

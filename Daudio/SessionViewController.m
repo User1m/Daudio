@@ -13,18 +13,18 @@
 #import "Session.h"
 #import <MediaPlayer/MediaPlayer.h>
 
+static NSString *reuseID = @"sessionCell";
+
 @interface SessionViewController () <UITableViewDelegate, UITableViewDataSource, PlayerViewControllerDelegate>
 
 @end
 
 @implementation SessionViewController {
-    Session *_selectedSession;
     PlayerViewController *playerVC;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     playerVC = [PlayerViewController controllerWithStoryboard];
@@ -34,7 +34,7 @@
 #pragma mark TableView Delegates
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SessionTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"sessionCell"];
+    SessionTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
     Session * session = [_savedSessions objectAtIndex:indexPath.row];
     cell.firstTrackLabel.text = session.firstTrack.title;
     cell.secondTrackLabel.text = session.secondTrack.title;
@@ -46,7 +46,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    playerVC.session = _selectedSession;
+    playerVC.session = [self.savedSessions objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:playerVC animated:YES];
 }
 
