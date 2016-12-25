@@ -80,6 +80,7 @@ static NSString *reuseID = @"sessionCell";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.savedSessions removeObjectAtIndex:indexPath.row];
+        [self saveData];
         [self.tableView reloadData];
     }
 }
@@ -97,6 +98,10 @@ static NSString *reuseID = @"sessionCell";
 }
 
 - (IBAction)saveAllSessions:(id)sender {
+    [self saveData];
+}
+
+- (void)saveData {
     [Session saveSessions:[self.savedSessions copy] userDefaults:NSUserDefaults.standardUserDefaults];
 }
 

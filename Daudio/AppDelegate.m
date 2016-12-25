@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <Onboard/OnboardingViewController.h>
+#import "SessionViewController.h"
+#import "UIViewController+Storyboard.h"
+
+static NSString *onboardFinishedKey = @"OnboardFinishedKey";
 
 @interface AppDelegate ()
 
@@ -14,9 +19,22 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    if (![NSUserDefaults.standardUserDefaults boolForKey:onboardFinishedKey]) {
+        OnboardingContentViewController *firstPage = [OnboardingContentViewController contentWithTitle:nil body:nil image:[UIImage imageNamed:@"OnboardPage1"] buttonText:nil action:nil];
+        OnboardingContentViewController *secondPage = [OnboardingContentViewController contentWithTitle:nil body:nil image:[UIImage imageNamed:@"OnboardPage2"] buttonText:nil action:nil];
+        OnboardingContentViewController *thirdPage = [OnboardingContentViewController contentWithTitle:nil body:nil image:[UIImage imageNamed:@"OnboardPage3"] buttonText:@"Let's Go!" action:^{
+            [NSUserDefaults.standardUserDefaults setBool:YES forKey:onboardFinishedKey];
+            SessionViewController *sessionVC = [SessionViewController controllerWithStoryboard];
+            self.window.rootViewController = sessionVC;
+        }];
+        
+        OnboardingViewController *onboardingVC = [OnboardingViewController onboardWithBackgroundImage:[UIImage imageNamed:@"Background"] contents:@[firstPage, secondPage, thirdPage]];
+        
+        self.window.rootViewController = onboardingVC;
+        [self.window makeKeyAndVisible];
+    }
     
     return YES;
 }

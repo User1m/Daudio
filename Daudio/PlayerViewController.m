@@ -184,7 +184,7 @@ static NSString *choiceTwo = @"Choose second song";
     self.session = nil;
     _audioPlayer1 = nil;
     _audioPlayer2 = nil;
-    _isNewSession = NO;
+    _isNewSession = _isPlaying = NO;
 }
 
 #pragma mark MPMediaPickerController Delgates
