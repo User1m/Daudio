@@ -10,16 +10,55 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 static NSString *sessionKey = @"SessionKey";
+static NSString *firstTrack = @"firstTrack";
+static NSString *secondTrack = @"secondTrack";
+
+@interface Session ()
+
+@end
 
 @implementation Session
 
-+ (void)saveSessions:(NSMutableArray<Session *> *)sessions userDefaults:(NSUserDefaults *)userDefaults  {
-    [userDefaults setObject:sessions forKey:sessionKey];
+#pragma mark NSCoding
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) {
+        self.firstTrack = [decoder decodeObjectForKey:firstTrack];
+        self.secondTrack = [decoder decodeObjectForKey:secondTrack];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.firstTrack forKey:firstTrack];
+    [coder encodeObject:self.secondTrack forKey:secondTrack];
+}
+
+#pragma mark Save/Load
++ (void)saveSessions:(NSArray<Session *> *)sessions userDefaults:(NSUserDefaults *)userDefaults  {
+    [userDefaults setObject:[Session archiveObjects:sessions] forKey:sessionKey];
 }
 
 + (NSMutableArray<Session *>*)loadSessionsFromUserDefaults:(NSUserDefaults *)userDefaults {
-    NSArray *sessions = [userDefaults objectForKey:sessionKey];
-    return (sessions.count > 0) ? [NSMutableArray arrayWithArray:sessions] : [NSMutableArray new];
+    NSMutableArray *unarchiveArray = [userDefaults objectForKey:sessionKey];
+    NSMutableArray *dataArray = [NSMutableArray new];
+    if (unarchiveArray.count > 0) {
+        for (NSData *sessionData in unarchiveArray) {
+            Session *decodedData = [NSKeyedUnarchiver unarchiveObjectWithData:sessionData];
+            [dataArray addObject:decodedData];
+        }
+    }
+    return dataArray;
 }
+
++ (NSMutableArray *)archiveObjects:(NSArray *)dataArray {
+    NSMutableArray *archiveArray = [NSMutableArray arrayWithCapacity:dataArray.count];
+    for (Session *session in dataArray) {
+        NSData *encodedData = [NSKeyedArchiver archivedDataWithRootObject:session];
+        [archiveArray addObject:encodedData];
+    }
+    return archiveArray;
+}
+
 
 @end

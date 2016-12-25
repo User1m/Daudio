@@ -10,12 +10,12 @@
 
 @class MPMediaItem;
 
-@interface Session : NSObject
+@interface Session : NSCoder
 
 @property (nonatomic, strong) MPMediaItem *firstTrack;
 @property (nonatomic, strong) MPMediaItem *secondTrack;
 
-+ (void)saveSessions:(NSMutableArray<Session *> *)sessions userDefaults:(NSUserDefaults *)userDefaults;
++ (void)saveSessions:(NSArray<Session *> *)sessions userDefaults:(NSUserDefaults *)userDefaults;
 + (NSMutableArray<Session *>*)loadSessionsFromUserDefaults:(NSUserDefaults *)userDefaults;
 
 @end

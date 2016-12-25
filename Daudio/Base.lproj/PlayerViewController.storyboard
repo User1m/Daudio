@@ -20,24 +20,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dF-lF-2Ia">
-                                <rect key="frame" x="0.0" y="20" width="193" height="647"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n11-rr-lYZ">
+                                <rect key="frame" x="0.0" y="0.0" width="193" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dF-lF-2Ia">
+                                        <rect key="frame" x="8" y="258" width="193" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="193" id="bn7-1z-0MQ"/>
+                                            <constraint firstAttribute="height" constant="150" id="d2v-e6-3Mc"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="selectFirstSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HXz-5A-773"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="193" id="bn7-1z-0MQ"/>
+                                    <constraint firstItem="7dF-lF-2Ia" firstAttribute="centerY" secondItem="n11-rr-lYZ" secondAttribute="centerY" id="D4N-3X-174"/>
+                                    <constraint firstAttribute="height" constant="667" id="YNR-Ry-evz"/>
+                                    <constraint firstItem="7dF-lF-2Ia" firstAttribute="leading" secondItem="n11-rr-lYZ" secondAttribute="leading" constant="8" id="weM-DZ-aw3"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="selectFirstSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HXz-5A-773"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDJ-uJ-wzv">
-                                <rect key="frame" x="193" y="20" width="182" height="647"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0A-Xc-XTd">
+                                <rect key="frame" x="188" y="0.0" width="187" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDJ-uJ-wzv">
+                                        <rect key="frame" x="0.0" y="258" width="182" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="PLI-rV-BJw"/>
+                                            <constraint firstAttribute="width" constant="182" id="ftW-fe-i4w"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="selectSecondSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p4q-Ou-8Hq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="182" id="ftW-fe-i4w"/>
+                                    <constraint firstAttribute="height" constant="667" id="6NY-vW-voh"/>
+                                    <constraint firstAttribute="trailing" secondItem="wDJ-uJ-wzv" secondAttribute="trailing" constant="5" id="YCJ-b4-AKl"/>
+                                    <constraint firstItem="wDJ-uJ-wzv" firstAttribute="centerY" secondItem="I0A-Xc-XTd" secondAttribute="centerY" id="sC3-tS-SSu"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="selectSecondSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p4q-Ou-8Hq"/>
-                                </connections>
-                            </button>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFF-od-1uy">
                                 <rect key="frame" x="186" y="20" width="15" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,15 +69,18 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="I0A-Xc-XTd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2AO-xm-k5t"/>
+                            <constraint firstAttribute="trailing" secondItem="I0A-Xc-XTd" secondAttribute="trailing" id="36v-DB-nPg"/>
+                            <constraint firstItem="n11-rr-lYZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3fn-PA-1N0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="n11-rr-lYZ" secondAttribute="bottom" id="4Hp-zf-aId"/>
                             <constraint firstAttribute="trailing" secondItem="GFF-od-1uy" secondAttribute="trailing" constant="174" id="4e2-H9-gl2"/>
-                            <constraint firstAttribute="trailing" secondItem="wDJ-uJ-wzv" secondAttribute="trailing" id="8KA-gU-88N"/>
-                            <constraint firstItem="7dF-lF-2Ia" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EPa-ku-f8L"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7dF-lF-2Ia" secondAttribute="bottom" id="O7Y-0E-VTB"/>
-                            <constraint firstItem="wDJ-uJ-wzv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TCT-0P-aMB"/>
+                            <constraint firstItem="I0A-Xc-XTd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="188" id="6Up-bt-fCf"/>
+                            <constraint firstItem="n11-rr-lYZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KXy-Ql-tfO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="I0A-Xc-XTd" secondAttribute="bottom" id="NjG-d2-mhC"/>
                             <constraint firstItem="GFF-od-1uy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="186" id="fXc-n2-pbK"/>
+                            <constraint firstAttribute="trailing" secondItem="n11-rr-lYZ" secondAttribute="trailing" constant="182" id="hgb-Db-n45"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GFF-od-1uy" secondAttribute="bottom" id="jLV-l2-Sqf"/>
-                            <constraint firstItem="7dF-lF-2Ia" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mA0-W3-Yf1"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wDJ-uJ-wzv" secondAttribute="bottom" id="mRd-KA-nEf"/>
+                            <constraint firstItem="I0A-Xc-XTd" firstAttribute="centerY" secondItem="n11-rr-lYZ" secondAttribute="centerY" id="l7y-xi-lwd"/>
                             <constraint firstItem="GFF-od-1uy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qxF-Pl-7cD"/>
                         </constraints>
                     </view>
@@ -61,6 +88,8 @@
                         <outlet property="chooseButton1" destination="7dF-lF-2Ia" id="ghz-P8-dwe"/>
                         <outlet property="chooseButton2" destination="wDJ-uJ-wzv" id="jTL-El-4Hi"/>
                         <outlet property="dragBar" destination="GFF-od-1uy" id="PKW-31-Fmz"/>
+                        <outlet property="firstTrackBckground" destination="n11-rr-lYZ" id="Tbe-O0-zW8"/>
+                        <outlet property="secondTrackBackground" destination="I0A-Xc-XTd" id="JWp-NW-NNM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

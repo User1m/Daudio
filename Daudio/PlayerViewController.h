@@ -11,7 +11,9 @@
 @class Session;
 
 @protocol PlayerViewControllerDelegate <NSObject>
+
 - (void)didSetNewSession:(Session *)session;
+
 @end
 
 @interface PlayerViewController : UIViewController

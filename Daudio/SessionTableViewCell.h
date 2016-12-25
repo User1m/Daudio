@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *firstTrackLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondTrackLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *firstTrackArtImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *secondTrackArtImageView;
 
 @end

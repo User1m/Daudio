@@ -28,16 +28,39 @@ static NSString *reuseID = @"sessionCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     playerVC = [PlayerViewController controllerWithStoryboard];
+    playerVC.delegate = self;
     self.savedSessions = [Session loadSessionsFromUserDefaults:NSUserDefaults.standardUserDefaults];
+    [self setupRefreshControl];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
+- (void)setupRefreshControl {
+    self.tableView.refreshControl = [UIRefreshControl new];
+    self.tableView.refreshControl.tintColor = [UIColor grayColor];
+    self.tableView.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [self.tableView.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)refreshData {
+    [self.tableView reloadData];
+    [self.tableView.refreshControl endRefreshing];
 }
 
 #pragma mark TableView Delegates
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SessionTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-    Session * session = [_savedSessions objectAtIndex:indexPath.row];
+    Session *session = [_savedSessions objectAtIndex:indexPath.row];
+    UIImage *art1 = [session.firstTrack.artwork imageWithSize:cell.firstTrackArtImageView.bounds.size];
+    UIImage *art2 = [session.secondTrack.artwork imageWithSize:cell.secondTrackArtImageView.bounds.size];
     cell.firstTrackLabel.text = session.firstTrack.title;
     cell.secondTrackLabel.text = session.secondTrack.title;
+    cell.firstTrackArtImageView.image = (art1) ? art1 : [UIImage imageNamed:@"music"];
+    cell.secondTrackArtImageView.image = (art2) ? art2 : [UIImage imageNamed:@"music"];
     return cell;
 }
 
@@ -50,10 +73,21 @@ static NSString *reuseID = @"sessionCell";
     [self.navigationController pushViewController:playerVC animated:YES];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.savedSessions removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark Player Delegates
 
 - (void)didSetNewSession:(Session *)session {
-    [_savedSessions addObject:session];
+    [self.savedSessions addObject:session];
 }
 
 #pragma mark Actions
@@ -63,7 +97,7 @@ static NSString *reuseID = @"sessionCell";
 }
 
 - (IBAction)saveAllSessions:(id)sender {
-    [Session saveSessions:_savedSessions userDefaults:NSUserDefaults.standardUserDefaults];
+    [Session saveSessions:[self.savedSessions copy] userDefaults:NSUserDefaults.standardUserDefaults];
 }
 
 @end

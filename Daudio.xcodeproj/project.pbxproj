@@ -22,6 +22,8 @@
 		DC71BC261E0EF6B200190871 /* UIViewController+Storyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC251E0EF6B200190871 /* UIViewController+Storyboard.m */; };
 		DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */; };
 		DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */; };
+		DC71BC2F1E0F1E0E00190871 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */; };
+		DC71BC321E0F236100190871 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC311E0F236100190871 /* PlayerView.m */; };
 		F84523C184ECA392459EE3B0 /* Pods_Daudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B8EFE7678D6AF2B28B7B1 /* Pods_Daudio.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,10 @@
 		DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionTableViewCell.m; sourceTree = "<group>"; };
 		DC71BC2A1E0F09D700190871 /* UIAlertController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Utils.h"; sourceTree = "<group>"; };
 		DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Utils.m"; sourceTree = "<group>"; };
+		DC71BC2D1E0F1E0E00190871 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		DC71BC301E0F236100190871 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		DC71BC311E0F236100190871 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 		E1B277DE528EA954F17AEF10 /* Pods-Daudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daudio/Pods-Daudio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +164,8 @@
 			children = (
 				DC71BC151E0EF49700190871 /* Session.h */,
 				DC71BC161E0EF49700190871 /* Session.m */,
+				DC71BC301E0F236100190871 /* PlayerView.h */,
+				DC71BC311E0F236100190871 /* PlayerView.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -193,6 +201,8 @@
 				DC71BC251E0EF6B200190871 /* UIViewController+Storyboard.m */,
 				DC71BC2A1E0F09D700190871 /* UIAlertController+Utils.h */,
 				DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */,
+				DC71BC2D1E0F1E0E00190871 /* NSString+Utils.h */,
+				DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -412,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC71BC321E0F236100190871 /* PlayerView.m in Sources */,
 				DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */,
 				DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */,
 				DC71BBED1E0E101800190871 /* PlayerViewController.m in Sources */,
@@ -419,6 +430,7 @@
 				DC71BBEA1E0E101800190871 /* AppDelegate.m in Sources */,
 				DC71BC261E0EF6B200190871 /* UIViewController+Storyboard.m in Sources */,
 				DC71BBE71E0E101800190871 /* main.m in Sources */,
+				DC71BC2F1E0F1E0E00190871 /* NSString+Utils.m in Sources */,
 				DC71BC101E0E48BF00190871 /* UIColor+Utils.m in Sources */,
 				DC71BC1A1E0EF4FC00190871 /* SessionViewController.m in Sources */,
 			);
