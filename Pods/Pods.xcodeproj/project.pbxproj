@@ -7,67 +7,130 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E62ACA3CA147C7F014A71F617A7E736 /* OnboardingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A0550D800E96576B409635BE97830489 /* OnboardingViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00FA5E1D16FC8624A61F358A0F0B2101 /* Pods-Daudio-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A165145197228934543FEC9D4B508968 /* Pods-Daudio-dummy.m */; };
+		07E839629BB5F2A6C630A16CC17687AE /* Pods-Daudio-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C628F9AF2F7AAD9A2FD8FD3579E16760 /* Pods-Daudio-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E62ACA3CA147C7F014A71F617A7E736 /* OnboardingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D61FEEB0A10EEA82CC6EC8F1FB9445F2 /* OnboardingViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15FF7E182A34DDC06A75ABBB5E1F3243 /* JSObjectionInjector.h in Headers */ = {isa = PBXBuildFile; fileRef = 13244885E5570EA05E543B494653CC7C /* JSObjectionInjector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17D384E0B4D32BD4035EC06BD7E22B70 /* JSObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A216CA6CA0A3D006BEBA529C2820C080 /* JSObjectFactory.m */; };
+		19685817DC392D9CAC1551AC1F6F757E /* JSObjectionBindingEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 17748EB1BBEEF6B5A9F08B31D478FB1D /* JSObjectionBindingEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		440C77A9E8F8892EAE6DFFC7F19035FB /* JSObjectionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F9B4495102EF2A7099B42076DBD8CDC4 /* JSObjectionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48BE95F8018AA96DF621E91226C2AFB0 /* JSObjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 9865E2A0B4ED179D10067C4020F3B991 /* JSObjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F7F68315C591ED68443433094D446F6 /* JSObjectionProviderEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 50D09EDC486FB13D50A68F8A5AD5312D /* JSObjectionProviderEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50507C9044B26F8EF4A88A7EC66919E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		5F8B2D8F331CDB0AC50BDA19A65060F4 /* JSObjectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 978D3D9F5AC7B676FA1F3ADC20D0C52D /* JSObjectionUtils.m */; };
+		64375E738120CEFC1D2F17BFAE1A8671 /* JSObjectionInjectorEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = E81159823482A6B519808D85F79DB8E0 /* JSObjectionInjectorEntry.m */; };
+		65A90A81A7C45F7673DD9C88C2D61264 /* Objection-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB9C6341E8B3CFFD23E931B69E2BF5 /* Objection-dummy.m */; };
+		66475E8D12015FFFCF354F1BECB1EAAC /* Objection-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1923EB701CFD53EA259ED26BFDC8CE20 /* Objection-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66F0F9C1019D702EFEB2A73420D74A1A /* NSObject+Objection.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3A833C8079C29E6866C7836C4BFCE0 /* NSObject+Objection.m */; };
+		722D33F0CC05FF967987100E6E888603 /* JSObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E48D7CA4333CD52CB8DA69E77309A4A /* JSObjectFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		774C2EB814784B6D7E746A10538DB8F3 /* Pods-DaudioTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E16FA6677B4014819C22AD288746D4D6 /* Pods-DaudioTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		991F609C73269DC78E11180E3C3E1032 /* OnboardingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E21037237F144F058B3D22E9F5E145 /* OnboardingContentViewController.m */; };
-		A06B2ACA4E8D9B92B7B7D4B306D8808D /* Onboard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C354FB9F00F19AAF83FF1342BE4562F /* Onboard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A22F3F69ACD560E2593AC06EDCB81D2E /* OnboardingContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B5D76BEB75C7DD3A96D6EF96F297B4 /* OnboardingContentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BBFC736AEAAD1C1009B48736A0CB2E85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		C537A2C98FD1DF6D4B6C6C8958000891 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C069D554638C2B2C9677377F246AB508 /* OnboardingViewController.m */; };
+		78B8B4CB6C871EC196C1A24204F0C6AB /* JSObjectionProviderEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = D685BE4641E9701411D1F85D8288AF09 /* JSObjectionProviderEntry.m */; };
+		80BF743350F3F935DB2A90F2915F827F /* JSObjectionInjectorEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 5426506D3C5A64B1B85A5DA375A6A05A /* JSObjectionInjectorEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84244834C59A030721240DFEC3E815D9 /* JSObjectionInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7439F9FDE9B7D26949E512FE53B5BA /* JSObjectionInjector.m */; };
+		8B1C26131873A3FFBDCA06585CEBE4D4 /* JSObjectionBindingEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1CA31929426E02798FF27784717894 /* JSObjectionBindingEntry.m */; };
+		8CDEE79FEB11C3161F6B33FBCA005A54 /* JSObjection.m in Sources */ = {isa = PBXBuildFile; fileRef = F068D1ACAD7318CB00A022F616F264B9 /* JSObjection.m */; };
+		910C2CC3F3B28B21E0CCF9C5927BD794 /* JSObjectionEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E0CD70E10F2BE7FA2B659528EC8D8 /* JSObjectionEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		991F609C73269DC78E11180E3C3E1032 /* OnboardingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 749B32DC3AA47F051939A9378A8D3209 /* OnboardingContentViewController.m */; };
+		A06B2ACA4E8D9B92B7B7D4B306D8808D /* Onboard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EAC3FB1697B9794B213A535EF26C778 /* Onboard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A22F3F69ACD560E2593AC06EDCB81D2E /* OnboardingContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AE007BB4BEB430AA0DDA791C25359E /* OnboardingContentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF58E5D33A39631AA8DC94F218748E16 /* JSObjectionRuntimePropertyReflector.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F4E0616226BFCC2FAB106220FFE434 /* JSObjectionRuntimePropertyReflector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C537A2C98FD1DF6D4B6C6C8958000891 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F682BEC78FD67A8FE17E4A90BB825DA5 /* OnboardingViewController.m */; };
+		CA635D12468BAC6C787F51D5370E49F2 /* JSObjectionModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D80DE212270FD740577D504B8669B6E3 /* JSObjectionModule.m */; };
+		CB825C222ADE6ECFE91980FDE093BF18 /* NSObject+Objection.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC64AFEE832E1F463A36797651BCE6D /* NSObject+Objection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF4928250A4E6E5D876C38E1A3013EDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		D0607CF1F082F6C4989308C7A46F1063 /* Objection.h in Headers */ = {isa = PBXBuildFile; fileRef = B446B49EDDCFAB4569435ADEDD115291 /* Objection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1E4AD6EEA7C8AE7AEBB50823E411EB4 /* JSObjectionModule.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE03A482AD4223A4D5C756E55602E77 /* JSObjectionModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D24A71BEF96782BAB0AE8A1F0BD1988E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		D29BB336580C916D0C34575DD6BE33AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		D88C67AE465F4A6C61CAFBD1452C20A1 /* Pods-DaudioTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 949F0BC480A1CAECCECA0E8BDB8C775C /* Pods-DaudioTests-dummy.m */; };
-		DB8021D0993E429176E29CF0A733C122 /* Pods-Daudio-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C628F9AF2F7AAD9A2FD8FD3579E16760 /* Pods-Daudio-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DFF8CB6CE450CED94E604B450A181155 /* Onboard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF261E9B59C4B6A5D9253B4DAD043939 /* Onboard-dummy.m */; };
-		FCD0AB9CE7C05EB463F2208706F9F98B /* Pods-Daudio-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A165145197228934543FEC9D4B508968 /* Pods-Daudio-dummy.m */; };
+		DFC490EBFAE566981DD50847E73BE8B5 /* JSObjectionEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C459FC8911C8C8E15A1075F0FCB93499 /* JSObjectionEntry.m */; };
+		DFF8CB6CE450CED94E604B450A181155 /* Onboard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C720F072A3CE81169E2E59570A087 /* Onboard-dummy.m */; };
+		E983BD82CD963220C432A99DBABCC9C5 /* JSObjectionRuntimePropertyReflector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E707FFA642B12DEEC8FF6EB25AA39B3 /* JSObjectionRuntimePropertyReflector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F5A0F6CEC8F9B78B157D9327CA33490B /* PBXContainerItemProxy */ = {
+		2218165596C21234AFFDBA4E2F12139A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8F5682E0AC126B1910FC04BA8A16F382;
 			remoteInfo = Onboard;
 		};
+		3C84709D3F690EC64911A15F881D05BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5A8F334E111044C70110D06DE4DAAAE;
+			remoteInfo = Objection;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		024A11713FD9337A510F9FDCA21931E9 /* Pods-Daudio-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Daudio-resources.sh"; sourceTree = "<group>"; };
 		042C5E61C79721B9DBE70623413501A3 /* Pods-DaudioTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-DaudioTests.modulemap"; sourceTree = "<group>"; };
+		0453D151497E2E6B1739EF837A58CB5C /* Pods_Daudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Daudio.framework; path = "Pods-Daudio.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0977E61FF966F3A7EE54A08BF84BCDB4 /* Objection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Objection.framework; path = Objection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E48D7CA4333CD52CB8DA69E77309A4A /* JSObjectFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectFactory.h; path = Source/JSObjectFactory.h; sourceTree = "<group>"; };
+		13244885E5570EA05E543B494653CC7C /* JSObjectionInjector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionInjector.h; path = Source/JSObjectionInjector.h; sourceTree = "<group>"; };
+		17748EB1BBEEF6B5A9F08B31D478FB1D /* JSObjectionBindingEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionBindingEntry.h; path = Source/JSObjectionBindingEntry.h; sourceTree = "<group>"; };
+		1923EB701CFD53EA259ED26BFDC8CE20 /* Objection-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Objection-umbrella.h"; sourceTree = "<group>"; };
+		1D7439F9FDE9B7D26949E512FE53B5BA /* JSObjectionInjector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionInjector.m; path = Source/JSObjectionInjector.m; sourceTree = "<group>"; };
 		1DD2C9864A68D927FE74BEDB4134CC1F /* Pods-Daudio.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Daudio.modulemap"; sourceTree = "<group>"; };
+		27D7A896D5B65E4D0D1048E85CB1EBCF /* Objection.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Objection.modulemap; sourceTree = "<group>"; };
 		2DB2F432DBD3F5947EC73BDEBA08D25D /* Pods-Daudio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Daudio.debug.xcconfig"; sourceTree = "<group>"; };
-		30E21037237F144F058B3D22E9F5E145 /* OnboardingContentViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OnboardingContentViewController.m; path = Source/OnboardingContentViewController.m; sourceTree = "<group>"; };
+		2E1CA31929426E02798FF27784717894 /* JSObjectionBindingEntry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionBindingEntry.m; path = Source/JSObjectionBindingEntry.m; sourceTree = "<group>"; };
+		49AE007BB4BEB430AA0DDA791C25359E /* OnboardingContentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OnboardingContentViewController.h; path = Source/OnboardingContentViewController.h; sourceTree = "<group>"; };
 		4AC12FC4ACD1605223D6029322919EB2 /* Pods-DaudioTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DaudioTests-frameworks.sh"; sourceTree = "<group>"; };
-		4C6C7D2AB05D38A4BBC4351563B61DAB /* Onboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Onboard.framework; path = Onboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		54AF6164939E0265DB16E9474A884BCC /* Onboard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Onboard.xcconfig; sourceTree = "<group>"; };
+		4E707FFA642B12DEEC8FF6EB25AA39B3 /* JSObjectionRuntimePropertyReflector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionRuntimePropertyReflector.m; path = Source/JSObjectionRuntimePropertyReflector.m; sourceTree = "<group>"; };
+		50D09EDC486FB13D50A68F8A5AD5312D /* JSObjectionProviderEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionProviderEntry.h; path = Source/JSObjectionProviderEntry.h; sourceTree = "<group>"; };
+		51E2F77AECE23646F01FE9C2A278A9A5 /* Pods_DaudioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DaudioTests.framework; path = "Pods-DaudioTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5426506D3C5A64B1B85A5DA375A6A05A /* JSObjectionInjectorEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionInjectorEntry.h; path = Source/JSObjectionInjectorEntry.h; sourceTree = "<group>"; };
 		5BC064FE2789375E02DB647BBFB61732 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C667F110C38A6D3F3005F99A8F0611D /* Pods-Daudio-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Daudio-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5D956F8BD3F3EF46CC985CE8227FA36B /* Pods-DaudioTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DaudioTests-resources.sh"; sourceTree = "<group>"; };
-		667A9E3DDC5D4A8DD781464F59D783A7 /* Onboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Onboard.modulemap; sourceTree = "<group>"; };
+		6BA0A6980C51E10A794AC1138CDB4C74 /* Onboard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Onboard.xcconfig; sourceTree = "<group>"; };
 		6C9C9B2FA6559A2FBB1AA4548D83A6AA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E2C720F072A3CE81169E2E59570A087 /* Onboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Onboard-dummy.m"; sourceTree = "<group>"; };
 		73DA61DD7BB910BCF171CD489736108C /* Pods-DaudioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DaudioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		749B32DC3AA47F051939A9378A8D3209 /* OnboardingContentViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OnboardingContentViewController.m; path = Source/OnboardingContentViewController.m; sourceTree = "<group>"; };
 		767BCEC831456DAF25797F77E55705BB /* Pods-DaudioTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DaudioTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7C354FB9F00F19AAF83FF1342BE4562F /* Onboard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Onboard-umbrella.h"; sourceTree = "<group>"; };
-		876D5C8C1C303DB92EF0C7B1020007E3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89A92268C7F95E46B3C2BB47523B2504 /* Onboard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Onboard-prefix.pch"; sourceTree = "<group>"; };
+		7D26F00687A666E44AE72769A2FDD7B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		858B6CCB6C3F2A8ABBB4B2BBE90D1C1C /* Objection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Objection-prefix.pch"; sourceTree = "<group>"; };
 		8D7162AAEBC07AB8465D70763DEBC566 /* Pods-DaudioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DaudioTests.release.xcconfig"; sourceTree = "<group>"; };
+		8DEB9C6341E8B3CFFD23E931B69E2BF5 /* Objection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Objection-dummy.m"; sourceTree = "<group>"; };
+		8EAC3FB1697B9794B213A535EF26C778 /* Onboard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Onboard-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		949F0BC480A1CAECCECA0E8BDB8C775C /* Pods-DaudioTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DaudioTests-dummy.m"; sourceTree = "<group>"; };
+		978D3D9F5AC7B676FA1F3ADC20D0C52D /* JSObjectionUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionUtils.m; path = Source/JSObjectionUtils.m; sourceTree = "<group>"; };
+		9865E2A0B4ED179D10067C4020F3B991 /* JSObjection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjection.h; path = Source/JSObjection.h; sourceTree = "<group>"; };
 		9ACECCB973E2967E1D44F8E7710D084A /* Pods-Daudio-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Daudio-frameworks.sh"; sourceTree = "<group>"; };
-		A0550D800E96576B409635BE97830489 /* OnboardingViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OnboardingViewController.h; path = Source/OnboardingViewController.h; sourceTree = "<group>"; };
+		9C18054CED4601F7533565797D243BD4 /* Onboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Onboard.framework; path = Onboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A165145197228934543FEC9D4B508968 /* Pods-Daudio-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Daudio-dummy.m"; sourceTree = "<group>"; };
+		A216CA6CA0A3D006BEBA529C2820C080 /* JSObjectFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectFactory.m; path = Source/JSObjectFactory.m; sourceTree = "<group>"; };
+		ADA2187FAF2B323864CDEA7BEF3EC71E /* Objection.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Objection.xcconfig; sourceTree = "<group>"; };
+		B146FA359656900B0F714D6FE0CD61A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B446B49EDDCFAB4569435ADEDD115291 /* Objection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Objection.h; path = Source/Objection.h; sourceTree = "<group>"; };
+		B4E54198C6EEA2D78DE9F1DE1746E5DA /* Onboard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Onboard-prefix.pch"; sourceTree = "<group>"; };
 		B509A7D668F8B13A3BC799101F49036F /* Pods-DaudioTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DaudioTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		B606280B2C9CDF8DFBDFF8E6E4584D70 /* Pods-Daudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Daudio.release.xcconfig"; sourceTree = "<group>"; };
-		BF261E9B59C4B6A5D9253B4DAD043939 /* Onboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Onboard-dummy.m"; sourceTree = "<group>"; };
-		C069D554638C2B2C9677377F246AB508 /* OnboardingViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OnboardingViewController.m; path = Source/OnboardingViewController.m; sourceTree = "<group>"; };
+		BA3A833C8079C29E6866C7836C4BFCE0 /* NSObject+Objection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Objection.m"; path = "Source/NSObject+Objection.m"; sourceTree = "<group>"; };
+		C459FC8911C8C8E15A1075F0FCB93499 /* JSObjectionEntry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionEntry.m; path = Source/JSObjectionEntry.m; sourceTree = "<group>"; };
 		C628F9AF2F7AAD9A2FD8FD3579E16760 /* Pods-Daudio-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Daudio-umbrella.h"; sourceTree = "<group>"; };
-		CA50154EB33FC94D4CED1F7C4FA40E8A /* Pods_DaudioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DaudioTests.framework; path = "Pods-DaudioTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D0B5D76BEB75C7DD3A96D6EF96F297B4 /* OnboardingContentViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OnboardingContentViewController.h; path = Source/OnboardingContentViewController.h; sourceTree = "<group>"; };
+		CE4E0CD70E10F2BE7FA2B659528EC8D8 /* JSObjectionEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionEntry.h; path = Source/JSObjectionEntry.h; sourceTree = "<group>"; };
+		CFE03A482AD4223A4D5C756E55602E77 /* JSObjectionModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionModule.h; path = Source/JSObjectionModule.h; sourceTree = "<group>"; };
+		D61FEEB0A10EEA82CC6EC8F1FB9445F2 /* OnboardingViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OnboardingViewController.h; path = Source/OnboardingViewController.h; sourceTree = "<group>"; };
+		D685BE4641E9701411D1F85D8288AF09 /* JSObjectionProviderEntry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionProviderEntry.m; path = Source/JSObjectionProviderEntry.m; sourceTree = "<group>"; };
+		D80DE212270FD740577D504B8669B6E3 /* JSObjectionModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionModule.m; path = Source/JSObjectionModule.m; sourceTree = "<group>"; };
 		DCD60A6B39D16CEA51E479508F6447C1 /* Pods-Daudio-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Daudio-acknowledgements.plist"; sourceTree = "<group>"; };
+		DF6728C5E73F7895CE80D36BA15D63EC /* Onboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Onboard.modulemap; sourceTree = "<group>"; };
 		E16FA6677B4014819C22AD288746D4D6 /* Pods-DaudioTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DaudioTests-umbrella.h"; sourceTree = "<group>"; };
-		E4109C6DBEE7D78D3E54C8477A79BA0A /* Pods_Daudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Daudio.framework; path = "Pods-Daudio.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E81159823482A6B519808D85F79DB8E0 /* JSObjectionInjectorEntry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjectionInjectorEntry.m; path = Source/JSObjectionInjectorEntry.m; sourceTree = "<group>"; };
+		EDC64AFEE832E1F463A36797651BCE6D /* NSObject+Objection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+Objection.h"; path = "Source/NSObject+Objection.h"; sourceTree = "<group>"; };
+		F068D1ACAD7318CB00A022F616F264B9 /* JSObjection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSObjection.m; path = Source/JSObjection.m; sourceTree = "<group>"; };
+		F3F4E0616226BFCC2FAB106220FFE434 /* JSObjectionRuntimePropertyReflector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionRuntimePropertyReflector.h; path = Source/JSObjectionRuntimePropertyReflector.h; sourceTree = "<group>"; };
+		F682BEC78FD67A8FE17E4A90BB825DA5 /* OnboardingViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OnboardingViewController.m; path = Source/OnboardingViewController.m; sourceTree = "<group>"; };
+		F9B4495102EF2A7099B42076DBD8CDC4 /* JSObjectionUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSObjectionUtils.h; path = Source/JSObjectionUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +142,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AE332BB306A33680BDF6693382223FD7 /* Frameworks */ = {
+		61CDF4D42E97505B6505E18A3559612A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBFC736AEAAD1C1009B48736A0CB2E85 /* Foundation.framework in Frameworks */,
+				CF4928250A4E6E5D876C38E1A3013EDF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		791FFF4A77AEDE1FD2FC2F3EA55011DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D29BB336580C916D0C34575DD6BE33AA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +169,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0215F5652B4F24A8E49DBAE543F9534D /* Products */ = {
+		0E8F97B9B8E2B2EFEE00ACDDDDC18271 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4C6C7D2AB05D38A4BBC4351563B61DAB /* Onboard.framework */,
-				E4109C6DBEE7D78D3E54C8477A79BA0A /* Pods_Daudio.framework */,
-				CA50154EB33FC94D4CED1F7C4FA40E8A /* Pods_DaudioTests.framework */,
+				7D26F00687A666E44AE72769A2FDD7B6 /* Info.plist */,
+				27D7A896D5B65E4D0D1048E85CB1EBCF /* Objection.modulemap */,
+				ADA2187FAF2B323864CDEA7BEF3EC71E /* Objection.xcconfig */,
+				8DEB9C6341E8B3CFFD23E931B69E2BF5 /* Objection-dummy.m */,
+				858B6CCB6C3F2A8ABBB4B2BBE90D1C1C /* Objection-prefix.pch */,
+				1923EB701CFD53EA259ED26BFDC8CE20 /* Objection-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Objection";
+			sourceTree = "<group>";
+		};
+		26ABB17EB7B4221F001DC49CCDE4A58C /* Objection */ = {
+			isa = PBXGroup;
+			children = (
+				0E48D7CA4333CD52CB8DA69E77309A4A /* JSObjectFactory.h */,
+				A216CA6CA0A3D006BEBA529C2820C080 /* JSObjectFactory.m */,
+				9865E2A0B4ED179D10067C4020F3B991 /* JSObjection.h */,
+				F068D1ACAD7318CB00A022F616F264B9 /* JSObjection.m */,
+				17748EB1BBEEF6B5A9F08B31D478FB1D /* JSObjectionBindingEntry.h */,
+				2E1CA31929426E02798FF27784717894 /* JSObjectionBindingEntry.m */,
+				CE4E0CD70E10F2BE7FA2B659528EC8D8 /* JSObjectionEntry.h */,
+				C459FC8911C8C8E15A1075F0FCB93499 /* JSObjectionEntry.m */,
+				13244885E5570EA05E543B494653CC7C /* JSObjectionInjector.h */,
+				1D7439F9FDE9B7D26949E512FE53B5BA /* JSObjectionInjector.m */,
+				5426506D3C5A64B1B85A5DA375A6A05A /* JSObjectionInjectorEntry.h */,
+				E81159823482A6B519808D85F79DB8E0 /* JSObjectionInjectorEntry.m */,
+				CFE03A482AD4223A4D5C756E55602E77 /* JSObjectionModule.h */,
+				D80DE212270FD740577D504B8669B6E3 /* JSObjectionModule.m */,
+				50D09EDC486FB13D50A68F8A5AD5312D /* JSObjectionProviderEntry.h */,
+				D685BE4641E9701411D1F85D8288AF09 /* JSObjectionProviderEntry.m */,
+				F3F4E0616226BFCC2FAB106220FFE434 /* JSObjectionRuntimePropertyReflector.h */,
+				4E707FFA642B12DEEC8FF6EB25AA39B3 /* JSObjectionRuntimePropertyReflector.m */,
+				F9B4495102EF2A7099B42076DBD8CDC4 /* JSObjectionUtils.h */,
+				978D3D9F5AC7B676FA1F3ADC20D0C52D /* JSObjectionUtils.m */,
+				EDC64AFEE832E1F463A36797651BCE6D /* NSObject+Objection.h */,
+				BA3A833C8079C29E6866C7836C4BFCE0 /* NSObject+Objection.m */,
+				B446B49EDDCFAB4569435ADEDD115291 /* Objection.h */,
+				0E8F97B9B8E2B2EFEE00ACDDDDC18271 /* Support Files */,
+			);
+			name = Objection;
+			path = Objection;
+			sourceTree = "<group>";
+		};
+		2AA19A6076AAE23299899D9CC501DB53 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				49AE007BB4BEB430AA0DDA791C25359E /* OnboardingContentViewController.h */,
+				749B32DC3AA47F051939A9378A8D3209 /* OnboardingContentViewController.m */,
+				D61FEEB0A10EEA82CC6EC8F1FB9445F2 /* OnboardingViewController.h */,
+				F682BEC78FD67A8FE17E4A90BB825DA5 /* OnboardingViewController.m */,
+				DD667396E22DA3A5B1C38F1DB9614CDE /* Support Files */,
+			);
+			name = Onboard;
+			path = Onboard;
+			sourceTree = "<group>";
+		};
+		40DE383B8556AD157A81597CE9384E4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0977E61FF966F3A7EE54A08BF84BCDB4 /* Objection.framework */,
+				9C18054CED4601F7533565797D243BD4 /* Onboard.framework */,
+				0453D151497E2E6B1739EF837A58CB5C /* Pods_Daudio.framework */,
+				51E2F77AECE23646F01FE9C2A278A9A5 /* Pods_DaudioTests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,8 +252,8 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				DE6F905A33365EF17E8B2FEA9402B46E /* Pods */,
-				0215F5652B4F24A8E49DBAE543F9534D /* Products */,
+				E8171D4E6420D67A806286DAF0129BE3 /* Pods */,
+				40DE383B8556AD157A81597CE9384E4D /* Products */,
 				971F5DCE385418D812F4D8576570CE21 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -154,33 +285,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		A1F93FB67D427D90BA01C4DF69A1F477 /* Onboard */ = {
-			isa = PBXGroup;
-			children = (
-				D0B5D76BEB75C7DD3A96D6EF96F297B4 /* OnboardingContentViewController.h */,
-				30E21037237F144F058B3D22E9F5E145 /* OnboardingContentViewController.m */,
-				A0550D800E96576B409635BE97830489 /* OnboardingViewController.h */,
-				C069D554638C2B2C9677377F246AB508 /* OnboardingViewController.m */,
-				A46EFCE7A04F6333D17B5F4CA3F3EC09 /* Support Files */,
-			);
-			name = Onboard;
-			path = Onboard;
-			sourceTree = "<group>";
-		};
-		A46EFCE7A04F6333D17B5F4CA3F3EC09 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				876D5C8C1C303DB92EF0C7B1020007E3 /* Info.plist */,
-				667A9E3DDC5D4A8DD781464F59D783A7 /* Onboard.modulemap */,
-				54AF6164939E0265DB16E9474A884BCC /* Onboard.xcconfig */,
-				BF261E9B59C4B6A5D9253B4DAD043939 /* Onboard-dummy.m */,
-				89A92268C7F95E46B3C2BB47523B2504 /* Onboard-prefix.pch */,
-				7C354FB9F00F19AAF83FF1342BE4562F /* Onboard-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Onboard";
-			sourceTree = "<group>";
-		};
 		BB9980D08F1351E0B8DAA97C5D557AB4 /* Pods-Daudio */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,10 +311,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DE6F905A33365EF17E8B2FEA9402B46E /* Pods */ = {
+		DD667396E22DA3A5B1C38F1DB9614CDE /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A1F93FB67D427D90BA01C4DF69A1F477 /* Onboard */,
+				B146FA359656900B0F714D6FE0CD61A9 /* Info.plist */,
+				DF6728C5E73F7895CE80D36BA15D63EC /* Onboard.modulemap */,
+				6BA0A6980C51E10A794AC1138CDB4C74 /* Onboard.xcconfig */,
+				6E2C720F072A3CE81169E2E59570A087 /* Onboard-dummy.m */,
+				B4E54198C6EEA2D78DE9F1DE1746E5DA /* Onboard-prefix.pch */,
+				8EAC3FB1697B9794B213A535EF26C778 /* Onboard-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Onboard";
+			sourceTree = "<group>";
+		};
+		E8171D4E6420D67A806286DAF0129BE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26ABB17EB7B4221F001DC49CCDE4A58C /* Objection */,
+				2AA19A6076AAE23299899D9CC501DB53 /* Onboard */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -218,11 +337,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		576FB32A86A5EE1F3081DC4CDC3F6188 /* Headers */ = {
+		3D96668FFBC2BF33348C2842DF946BD1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB8021D0993E429176E29CF0A733C122 /* Pods-Daudio-umbrella.h in Headers */,
+				07E839629BB5F2A6C630A16CC17687AE /* Pods-Daudio-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +350,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				774C2EB814784B6D7E746A10538DB8F3 /* Pods-DaudioTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E17D31042C2FFA21AAF037664A02136 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				722D33F0CC05FF967987100E6E888603 /* JSObjectFactory.h in Headers */,
+				48BE95F8018AA96DF621E91226C2AFB0 /* JSObjection.h in Headers */,
+				19685817DC392D9CAC1551AC1F6F757E /* JSObjectionBindingEntry.h in Headers */,
+				910C2CC3F3B28B21E0CCF9C5927BD794 /* JSObjectionEntry.h in Headers */,
+				15FF7E182A34DDC06A75ABBB5E1F3243 /* JSObjectionInjector.h in Headers */,
+				80BF743350F3F935DB2A90F2915F827F /* JSObjectionInjectorEntry.h in Headers */,
+				D1E4AD6EEA7C8AE7AEBB50823E411EB4 /* JSObjectionModule.h in Headers */,
+				4F7F68315C591ED68443433094D446F6 /* JSObjectionProviderEntry.h in Headers */,
+				BF58E5D33A39631AA8DC94F218748E16 /* JSObjectionRuntimePropertyReflector.h in Headers */,
+				440C77A9E8F8892EAE6DFFC7F19035FB /* JSObjectionUtils.h in Headers */,
+				CB825C222ADE6ECFE91980FDE093BF18 /* NSObject+Objection.h in Headers */,
+				66475E8D12015FFFCF354F1BECB1EAAC /* Objection-umbrella.h in Headers */,
+				D0607CF1F082F6C4989308C7A46F1063 /* Objection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +400,7 @@
 			);
 			name = "Pods-DaudioTests";
 			productName = "Pods-DaudioTests";
-			productReference = CA50154EB33FC94D4CED1F7C4FA40E8A /* Pods_DaudioTests.framework */;
+			productReference = 51E2F77AECE23646F01FE9C2A278A9A5 /* Pods_DaudioTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8F5682E0AC126B1910FC04BA8A16F382 /* Onboard */ = {
@@ -278,25 +417,43 @@
 			);
 			name = Onboard;
 			productName = Onboard;
-			productReference = 4C6C7D2AB05D38A4BBC4351563B61DAB /* Onboard.framework */;
+			productReference = 9C18054CED4601F7533565797D243BD4 /* Onboard.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EE0255CB227424710A84BBC5332AA3A9 /* Pods-Daudio */ = {
+		A5A8F334E111044C70110D06DE4DAAAE /* Objection */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3457AD848FA08002235FF7211D16FF2 /* Build configuration list for PBXNativeTarget "Pods-Daudio" */;
+			buildConfigurationList = 38F8A305418867357550A9AC771E2848 /* Build configuration list for PBXNativeTarget "Objection" */;
 			buildPhases = (
-				0C297D2079BEFCE958F7D9CBBCC02D61 /* Sources */,
-				AE332BB306A33680BDF6693382223FD7 /* Frameworks */,
-				576FB32A86A5EE1F3081DC4CDC3F6188 /* Headers */,
+				951BD2E1306D48034A59EC496CB887DF /* Sources */,
+				61CDF4D42E97505B6505E18A3559612A /* Frameworks */,
+				7E17D31042C2FFA21AAF037664A02136 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				848DA583AC3B9234588BDFD814A5309E /* PBXTargetDependency */,
+			);
+			name = Objection;
+			productName = Objection;
+			productReference = 0977E61FF966F3A7EE54A08BF84BCDB4 /* Objection.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B5AD4940BB7C3FA1B7026D51C89E93BB /* Pods-Daudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D61F9598376169AEDEE35D2D78F3D5B /* Build configuration list for PBXNativeTarget "Pods-Daudio" */;
+			buildPhases = (
+				B35BFE922F818BDFABCB181BEC7AE61B /* Sources */,
+				791FFF4A77AEDE1FD2FC2F3EA55011DD /* Frameworks */,
+				3D96668FFBC2BF33348C2842DF946BD1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8AE1ACF3B01E00CEEA958755415EA151 /* PBXTargetDependency */,
+				1E5686706BA856D88B9FE9737F1E60A3 /* PBXTargetDependency */,
 			);
 			name = "Pods-Daudio";
 			productName = "Pods-Daudio";
-			productReference = E4109C6DBEE7D78D3E54C8477A79BA0A /* Pods_Daudio.framework */;
+			productReference = 0453D151497E2E6B1739EF837A58CB5C /* Pods_Daudio.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -316,12 +473,13 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 0215F5652B4F24A8E49DBAE543F9534D /* Products */;
+			productRefGroup = 40DE383B8556AD157A81597CE9384E4D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A5A8F334E111044C70110D06DE4DAAAE /* Objection */,
 				8F5682E0AC126B1910FC04BA8A16F382 /* Onboard */,
-				EE0255CB227424710A84BBC5332AA3A9 /* Pods-Daudio */,
+				B5AD4940BB7C3FA1B7026D51C89E93BB /* Pods-Daudio */,
 				069492E72D7E244A93BD07547962717D /* Pods-DaudioTests */,
 			);
 		};
@@ -338,14 +496,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0C297D2079BEFCE958F7D9CBBCC02D61 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FCD0AB9CE7C05EB463F2208706F9F98B /* Pods-Daudio-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4AD64FBE301B4C91733D17079C47AAC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,21 +504,54 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		951BD2E1306D48034A59EC496CB887DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17D384E0B4D32BD4035EC06BD7E22B70 /* JSObjectFactory.m in Sources */,
+				8CDEE79FEB11C3161F6B33FBCA005A54 /* JSObjection.m in Sources */,
+				8B1C26131873A3FFBDCA06585CEBE4D4 /* JSObjectionBindingEntry.m in Sources */,
+				DFC490EBFAE566981DD50847E73BE8B5 /* JSObjectionEntry.m in Sources */,
+				84244834C59A030721240DFEC3E815D9 /* JSObjectionInjector.m in Sources */,
+				64375E738120CEFC1D2F17BFAE1A8671 /* JSObjectionInjectorEntry.m in Sources */,
+				CA635D12468BAC6C787F51D5370E49F2 /* JSObjectionModule.m in Sources */,
+				78B8B4CB6C871EC196C1A24204F0C6AB /* JSObjectionProviderEntry.m in Sources */,
+				E983BD82CD963220C432A99DBABCC9C5 /* JSObjectionRuntimePropertyReflector.m in Sources */,
+				5F8B2D8F331CDB0AC50BDA19A65060F4 /* JSObjectionUtils.m in Sources */,
+				66F0F9C1019D702EFEB2A73420D74A1A /* NSObject+Objection.m in Sources */,
+				65A90A81A7C45F7673DD9C88C2D61264 /* Objection-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B35BFE922F818BDFABCB181BEC7AE61B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00FA5E1D16FC8624A61F358A0F0B2101 /* Pods-Daudio-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		848DA583AC3B9234588BDFD814A5309E /* PBXTargetDependency */ = {
+		1E5686706BA856D88B9FE9737F1E60A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Onboard;
 			target = 8F5682E0AC126B1910FC04BA8A16F382 /* Onboard */;
-			targetProxy = F5A0F6CEC8F9B78B157D9327CA33490B /* PBXContainerItemProxy */;
+			targetProxy = 2218165596C21234AFFDBA4E2F12139A /* PBXContainerItemProxy */;
+		};
+		8AE1ACF3B01E00CEEA958755415EA151 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Objection;
+			target = A5A8F334E111044C70110D06DE4DAAAE /* Objection */;
+			targetProxy = 3C84709D3F690EC64911A15F881D05BC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3B2C9CDF0F70A0DB11B9E8566FD4E93D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54AF6164939E0265DB16E9474A884BCC /* Onboard.xcconfig */;
+			baseConfigurationReference = 6BA0A6980C51E10A794AC1138CDB4C74 /* Onboard.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -389,6 +572,41 @@
 				MODULEMAP_FILE = "Target Support Files/Onboard/Onboard.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Onboard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		46F904807E579C6BECEFDAAA449A1221 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DB2F432DBD3F5947EC73BDEBA08D25D /* Pods-Daudio.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Daudio/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Daudio/Pods-Daudio.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Daudio;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -511,9 +729,9 @@
 			};
 			name = Debug;
 		};
-		B190AE39DEAB8CD4C8C9C2EEE6D78235 /* Debug */ = {
+		6DA6083D79254E3FBD2DCD19A7F67364 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DB2F432DBD3F5947EC73BDEBA08D25D /* Pods-Daudio.debug.xcconfig */;
+			baseConfigurationReference = ADA2187FAF2B323864CDEA7BEF3EC71E /* Objection.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -526,18 +744,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Daudio/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Objection/Objection-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Objection/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Daudio/Pods-Daudio.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Objection/Objection.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Daudio;
+				PRODUCT_NAME = Objection;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,6 +759,37 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		6E1D11BA2ACA07E516DA28A63436033C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADA2187FAF2B323864CDEA7BEF3EC71E /* Objection.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Objection/Objection-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Objection/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Objection/Objection.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Objection;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -586,38 +831,7 @@
 			};
 			name = Release;
 		};
-		CDCEC0C616D8C3888B4900F7A8639DB3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54AF6164939E0265DB16E9474A884BCC /* Onboard.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Onboard/Onboard-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Onboard/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Onboard/Onboard.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Onboard;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D4CF1E9825C4454AE98449B8B79951BF /* Release */ = {
+		C176256504245D39294F406BBCC66BC2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B606280B2C9CDF8DFBDFF8E6E4584D70 /* Pods-Daudio.release.xcconfig */;
 			buildSettings = {
@@ -652,6 +866,37 @@
 			};
 			name = Release;
 		};
+		CDCEC0C616D8C3888B4900F7A8639DB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BA0A6980C51E10A794AC1138CDB4C74 /* Onboard.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Onboard/Onboard-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Onboard/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Onboard/Onboard.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Onboard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -673,6 +918,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		38F8A305418867357550A9AC771E2848 /* Build configuration list for PBXNativeTarget "Objection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA6083D79254E3FBD2DCD19A7F67364 /* Debug */,
+				6E1D11BA2ACA07E516DA28A63436033C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		754A201AE627327E0428243B1D3DB195 /* Build configuration list for PBXNativeTarget "Onboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -682,11 +936,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3457AD848FA08002235FF7211D16FF2 /* Build configuration list for PBXNativeTarget "Pods-Daudio" */ = {
+		9D61F9598376169AEDEE35D2D78F3D5B /* Build configuration list for PBXNativeTarget "Pods-Daudio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B190AE39DEAB8CD4C8C9C2EEE6D78235 /* Debug */,
-				D4CF1E9825C4454AE98449B8B79951BF /* Release */,
+				46F904807E579C6BECEFDAAA449A1221 /* Debug */,
+				C176256504245D39294F406BBCC66BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
