@@ -14,7 +14,6 @@
 		DC71BBF01E0E101800190871 /* PlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC71BBEE1E0E101800190871 /* PlayerViewController.storyboard */; };
 		DC71BBF21E0E101800190871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC71BBF11E0E101800190871 /* Assets.xcassets */; };
 		DC71BBF51E0E101800190871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC71BBF31E0E101800190871 /* LaunchScreen.storyboard */; };
-		DC71BC001E0E101800190871 /* DaudioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BBFF1E0E101800190871 /* DaudioTests.m */; };
 		DC71BC101E0E48BF00190871 /* UIColor+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC0F1E0E48BF00190871 /* UIColor+Utils.m */; };
 		DC71BC171E0EF49700190871 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC161E0EF49700190871 /* Session.m */; };
 		DC71BC1A1E0EF4FC00190871 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC191E0EF4FC00190871 /* SessionViewController.m */; };
@@ -24,6 +23,15 @@
 		DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */; };
 		DC71BC2F1E0F1E0E00190871 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */; };
 		DC71BC321E0F236100190871 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC311E0F236100190871 /* PlayerView.m */; };
+		DCDE02041E119AED005B7D8A /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02031E119AED005B7D8A /* SessionManager.m */; };
+		DCDE02071E119B19005B7D8A /* SessionDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02061E119B19005B7D8A /* SessionDataService.m */; };
+		DCDE02091E119B46005B7D8A /* SessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02081E119B46005B7D8A /* SessionTests.m */; };
+		DCDE020D1E119D15005B7D8A /* MockMPMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE020C1E119D15005B7D8A /* MockMPMediaItem.m */; };
+		DCDE020F1E11A0A4005B7D8A /* SessionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE020E1E11A0A4005B7D8A /* SessionManagerTests.m */; };
+		DCDE02111E11AEE5005B7D8A /* SessionVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02101E11AEE5005B7D8A /* SessionVCTests.m */; };
+		DCDE02131E11AEF0005B7D8A /* PlayerVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02121E11AEF0005B7D8A /* PlayerVCTests.m */; };
+		DCDE02191E11CA43005B7D8A /* PlayerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02181E11CA43005B7D8A /* PlayerViewTests.m */; };
+		DCDE021B1E11CB24005B7D8A /* SessionDataServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE021A1E11CB24005B7D8A /* SessionDataServiceTests.m */; };
 		F84523C184ECA392459EE3B0 /* Pods_Daudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B8EFE7678D6AF2B28B7B1 /* Pods_Daudio.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +62,6 @@
 		DC71BBF41E0E101800190871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC71BBF61E0E101800190871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC71BBFB1E0E101800190871 /* DaudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC71BBFF1E0E101800190871 /* DaudioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaudioTests.m; sourceTree = "<group>"; };
 		DC71BC011E0E101800190871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC71BC0E1E0E48BF00190871 /* UIColor+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utils.h"; sourceTree = "<group>"; };
 		DC71BC0F1E0E48BF00190871 /* UIColor+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utils.m"; sourceTree = "<group>"; };
@@ -73,6 +80,18 @@
 		DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		DC71BC301E0F236100190871 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		DC71BC311E0F236100190871 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		DCDE02021E119AED005B7D8A /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		DCDE02031E119AED005B7D8A /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+		DCDE02051E119B19005B7D8A /* SessionDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDataService.h; sourceTree = "<group>"; };
+		DCDE02061E119B19005B7D8A /* SessionDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDataService.m; sourceTree = "<group>"; };
+		DCDE02081E119B46005B7D8A /* SessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionTests.m; sourceTree = "<group>"; };
+		DCDE020B1E119D15005B7D8A /* MockMPMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockMPMediaItem.h; sourceTree = "<group>"; };
+		DCDE020C1E119D15005B7D8A /* MockMPMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockMPMediaItem.m; sourceTree = "<group>"; };
+		DCDE020E1E11A0A4005B7D8A /* SessionManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManagerTests.m; sourceTree = "<group>"; };
+		DCDE02101E11AEE5005B7D8A /* SessionVCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionVCTests.m; sourceTree = "<group>"; };
+		DCDE02121E11AEF0005B7D8A /* PlayerVCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerVCTests.m; sourceTree = "<group>"; };
+		DCDE02181E11CA43005B7D8A /* PlayerViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewTests.m; sourceTree = "<group>"; };
+		DCDE021A1E11CB24005B7D8A /* SessionDataServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDataServiceTests.m; sourceTree = "<group>"; };
 		E1B277DE528EA954F17AEF10 /* Pods-Daudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daudio/Pods-Daudio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,7 +172,10 @@
 		DC71BBFE1E0E101800190871 /* DaudioTests */ = {
 			isa = PBXGroup;
 			children = (
-				DC71BBFF1E0E101800190871 /* DaudioTests.m */,
+				DCDE020A1E119CFE005B7D8A /* Mocks */,
+				DCDE02011E119A08005B7D8A /* ViewTests */,
+				DCDE02001E119A01005B7D8A /* ControllerTests */,
+				DCDE01FF1E1199F7005B7D8A /* ModelTests */,
 				DC71BC011E0E101800190871 /* Info.plist */,
 			);
 			path = DaudioTests;
@@ -166,6 +188,8 @@
 				DC71BC161E0EF49700190871 /* Session.m */,
 				DC71BC301E0F236100190871 /* PlayerView.h */,
 				DC71BC311E0F236100190871 /* PlayerView.m */,
+				DCDE02021E119AED005B7D8A /* SessionManager.h */,
+				DCDE02031E119AED005B7D8A /* SessionManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -173,12 +197,12 @@
 		DC71BC121E0EF42500190871 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCDE02051E119B19005B7D8A /* SessionDataService.h */,
+				DCDE02061E119B19005B7D8A /* SessionDataService.m */,
 				DC71BC181E0EF4FC00190871 /* SessionViewController.h */,
 				DC71BC191E0EF4FC00190871 /* SessionViewController.m */,
 				DC71BBEB1E0E101800190871 /* PlayerViewController.h */,
 				DC71BBEC1E0E101800190871 /* PlayerViewController.m */,
-				DC71BC271E0EF9D100190871 /* SessionTableViewCell.h */,
-				DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +210,8 @@
 		DC71BC131E0EF42E00190871 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DC71BC271E0EF9D100190871 /* SessionTableViewCell.h */,
+				DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */,
 				DC71BBEE1E0E101800190871 /* PlayerViewController.storyboard */,
 				DC71BC1B1E0EF51100190871 /* SessionViewController.storyboard */,
 			);
@@ -205,6 +231,42 @@
 				DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		DCDE01FF1E1199F7005B7D8A /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				DCDE02081E119B46005B7D8A /* SessionTests.m */,
+				DCDE020E1E11A0A4005B7D8A /* SessionManagerTests.m */,
+				DCDE02181E11CA43005B7D8A /* PlayerViewTests.m */,
+			);
+			name = ModelTests;
+			sourceTree = "<group>";
+		};
+		DCDE02001E119A01005B7D8A /* ControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				DCDE02101E11AEE5005B7D8A /* SessionVCTests.m */,
+				DCDE02121E11AEF0005B7D8A /* PlayerVCTests.m */,
+				DCDE021A1E11CB24005B7D8A /* SessionDataServiceTests.m */,
+			);
+			name = ControllerTests;
+			sourceTree = "<group>";
+		};
+		DCDE02011E119A08005B7D8A /* ViewTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewTests;
+			sourceTree = "<group>";
+		};
+		DCDE020A1E119CFE005B7D8A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				DCDE020B1E119D15005B7D8A /* MockMPMediaItem.h */,
+				DCDE020C1E119D15005B7D8A /* MockMPMediaItem.m */,
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		F7734F4BE710CA21A261D8F3 /* Pods */ = {
@@ -423,11 +485,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC71BC321E0F236100190871 /* PlayerView.m in Sources */,
+				DCDE02071E119B19005B7D8A /* SessionDataService.m in Sources */,
 				DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */,
 				DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */,
 				DC71BBED1E0E101800190871 /* PlayerViewController.m in Sources */,
 				DC71BC171E0EF49700190871 /* Session.m in Sources */,
 				DC71BBEA1E0E101800190871 /* AppDelegate.m in Sources */,
+				DCDE02041E119AED005B7D8A /* SessionManager.m in Sources */,
 				DC71BC261E0EF6B200190871 /* UIViewController+Storyboard.m in Sources */,
 				DC71BBE71E0E101800190871 /* main.m in Sources */,
 				DC71BC2F1E0F1E0E00190871 /* NSString+Utils.m in Sources */,
@@ -440,7 +504,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC71BC001E0E101800190871 /* DaudioTests.m in Sources */,
+				DCDE020F1E11A0A4005B7D8A /* SessionManagerTests.m in Sources */,
+				DCDE02191E11CA43005B7D8A /* PlayerViewTests.m in Sources */,
+				DCDE02131E11AEF0005B7D8A /* PlayerVCTests.m in Sources */,
+				DCDE020D1E119D15005B7D8A /* MockMPMediaItem.m in Sources */,
+				DCDE02091E119B46005B7D8A /* SessionTests.m in Sources */,
+				DCDE02111E11AEE5005B7D8A /* SessionVCTests.m in Sources */,
+				DCDE021B1E11CB24005B7D8A /* SessionDataServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

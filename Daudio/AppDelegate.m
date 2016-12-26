@@ -10,6 +10,7 @@
 #import <Onboard/OnboardingViewController.h>
 #import "SessionViewController.h"
 #import "UIViewController+Storyboard.h"
+#import <Objection/Objection.h>
 
 static NSString *onboardFinishedKey = @"OnboardFinishedKey";
 
@@ -20,6 +21,9 @@ static NSString *onboardFinishedKey = @"OnboardFinishedKey";
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    JSObjectionInjector *injector = [JSObjection createInjector];
+    [JSObjection setDefaultInjector:injector];
     
     if (![NSUserDefaults.standardUserDefaults boolForKey:onboardFinishedKey]) {
         OnboardingContentViewController *firstPage = [OnboardingContentViewController contentWithTitle:nil body:nil image:[UIImage imageNamed:@"OnboardPage1"] buttonText:nil action:nil];

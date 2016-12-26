@@ -1,15 +1,22 @@
 PODS:
   - Objection (1.6.1)
+  - OCHamcrest (6.0.0)
+  - OCMockito (4.0.0):
+    - OCHamcrest (~> 6.0)
   - Onboard (2.3.0)
 
 DEPENDENCIES:
   - Objection (= 1.6.1)
+  - OCHamcrest (~> 6.0)
+  - OCMockito (~> 4.0)
   - Onboard
 
 SPEC CHECKSUMS:
   Objection: ed03f2219cb22d2b5b893114219fe6c7e3263bde
+  OCHamcrest: fc8ab38149b97df8db8029a3f2157c951bf9081d
+  OCMockito: 0bcf2e89a745b9de79c3b0229b46115ce3b962ab
   Onboard: 7f41c4a92e66d53844438434b1e7f892d363e55b
 
-PODFILE CHECKSUM: 2c5f2db6032777562e02356581f38cd10fb293d4
+PODFILE CHECKSUM: 359c46178bac4514f311d6433d8536df59574935
 
 COCOAPODS: 1.1.1

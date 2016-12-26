@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlayerView.h"
 
 @class Session;
 
 @protocol PlayerViewControllerDelegate <NSObject>
-
 - (void)didSetNewSession:(Session *)session;
-
 @end
 
 @interface PlayerViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *dragBar;
 @property (nonatomic, weak) id<PlayerViewControllerDelegate> delegate;
-@property (nonatomic, strong) Session *session;
+@property (nonatomic, strong) PlayerView *player;
 
 @end
 

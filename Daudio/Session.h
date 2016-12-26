@@ -15,7 +15,4 @@
 @property (nonatomic, strong) MPMediaItem *firstTrack;
 @property (nonatomic, strong) MPMediaItem *secondTrack;
 
-+ (void)saveSessions:(NSArray<Session *> *)sessions userDefaults:(NSUserDefaults *)userDefaults;
-+ (NSMutableArray<Session *>*)loadSessionsFromUserDefaults:(NSUserDefaults *)userDefaults;
-
 @end

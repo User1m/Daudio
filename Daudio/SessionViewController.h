@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class Session;
+@class SessionDataService;
 
 @interface SessionViewController : UITableViewController
 
-@property (nonatomic, strong) NSMutableArray<Session *> *savedSessions;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveAllButton;
+
+@property (nonatomic, strong) SessionDataService *dataService;
 
 @end

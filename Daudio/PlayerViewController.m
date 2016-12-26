@@ -5,14 +5,14 @@
 //  Created by Claudius Mbemba on 12/23/16.
 //  Copyright © 2016 Claudius Mbemba. All rights reserved.
 //
-
-@import AVFoundation;
 @import MediaPlayer;
 #import "UIColor+Utils.h"
 #import "PlayerViewController.h"
 #import "Session.h"
-#import "UIAlertController+Utils.h"
+#import "PlayerView.h"
 #import "NSString+Utils.h"
+#import <Objection/Objection.h>
+#import <AVFoundation/AVAudioPlayer.h>
 
 typedef NS_ENUM(NSUInteger, SongChoice) {
     firstChoice,
@@ -23,9 +23,8 @@ typedef NS_ENUM(NSUInteger, SongChoice) {
 static NSString *choiceOne = @"Choose first song";
 static NSString *choiceTwo = @"Choose second song";
 
-@interface PlayerViewController () <MPMediaPickerControllerDelegate, UIGestureRecognizerDelegate, AVAudioPlayerDelegate>
+@interface PlayerViewController () <PlayerViewDelegate, MPMediaPickerControllerDelegate, UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *dragBar;
 @property (weak, nonatomic) IBOutlet UIButton *chooseButton1;
 @property (weak, nonatomic) IBOutlet UIButton *chooseButton2;
 @property (weak, nonatomic) IBOutlet UIView *firstTrackBckground;
@@ -33,35 +32,32 @@ static NSString *choiceTwo = @"Choose second song";
 
 @end
 
+
 @implementation PlayerViewController {
-    AVAudioPlayer *_audioPlayer1, *_audioPlayer2;
     MPMediaPickerController *_mediaPicker;
     SongChoice _selectedAudioChoice;
-    BOOL _isHorizontalPan, _isPlaying, _isNewSession;
+    BOOL _isHorizontalPan;
 }
 
 #pragma mark Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.player.delegate = self;
     [self setupDragGesture];
     [self setupPicker];
+    [self setupInitialViewState];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.session == nil) {
-        _isNewSession = YES;
-        self.session = [Session new];
-    }
-    [self setupViewState];
 }
 
 #pragma mark Setups
 
-- (void)setupViewState {
-    NSString *song1Title = ([self.session.firstTrack.title isNotEmpty]) ?  self.session.firstTrack.title : choiceOne;
-    NSString *song2Title = ([self.session.secondTrack.title isNotEmpty]) ? self.session.secondTrack.title : choiceTwo;
+- (void)setupInitialViewState {
+    NSString *song1Title = ([self.player.session.firstTrack.title isNotEmpty]) ?  self.player.session.firstTrack.title : choiceOne;
+    NSString *song2Title = ([self.player.session.secondTrack.title isNotEmpty]) ? self.player.session.secondTrack.title : choiceTwo;
     self.firstTrackBckground.backgroundColor = [UIColor funRed];
     self.secondTrackBackground.backgroundColor = [UIColor funYellow];
     [self.chooseButton1 setTitle:song1Title forState:UIControlStateNormal];
@@ -82,10 +78,8 @@ static NSString *choiceTwo = @"Choose second song";
 }
 
 - (void)didDragBar:(UIPanGestureRecognizer *)gesture {
-    if (_isHorizontalPan && _audioPlayer1 && _audioPlayer2) {
+    if (_isHorizontalPan && [self.player playersAreSet]) {
         CGPoint translation = [gesture translationInView:self.view];
-//        CGPoint displacement = (_isHorizontalPan) ? CGPointMake(translation.x, 0) : CGPointMake(0, translation.y);
-        
         self.dragBar.transform = CGAffineTransformMakeTranslation(translation.x, 0);
         
         [self updateView];
@@ -94,7 +88,8 @@ static NSString *choiceTwo = @"Choose second song";
         if (gesture.state == UIGestureRecognizerStateEnded) {
             if ([self isCloseToCenter:self.dragBar.frame]) {
                 [self resetView];
-                [self stopPlayers];
+                [self.player stopPlayers];
+                [self setupInitialViewState];
             }
         }
     }
@@ -103,24 +98,7 @@ static NSString *choiceTwo = @"Choose second song";
 - (void)resetView {
     self.dragBar.transform = CGAffineTransformMakeTranslation(0,0);
     self.dragBar.center = self.dragBar.center;
-    [self setupViewState];
-}
-
-#pragma mark Player
-
-- (void)startPlayers {
-    _isPlaying = YES;
-    [_audioPlayer1 play];
-    _audioPlayer1.volume = 1.0;
-    [_audioPlayer2 play];
-    _audioPlayer2.volume = 0.0;
-}
-
-- (void)stopPlayers {
-    _isPlaying = NO;
-    [_audioPlayer1 stop];
-    [_audioPlayer2 stop];
-    [self setupViewState];
+    [self setupInitialViewState];
 }
 
 - (BOOL)isCloseToCenter:(CGRect)rect {
@@ -129,13 +107,13 @@ static NSString *choiceTwo = @"Choose second song";
 
 - (void)updateView {
     if (self.dragBar.frame.origin.x < self.view.bounds.size.width/2) {
-        NSString *song1Title = ([self.session.firstTrack.title isNotEmpty]) ?  self.session.firstTrack.title : choiceOne;
+        NSString *song1Title = ([self.player.session.firstTrack.title isNotEmpty]) ?  self.player.session.firstTrack.title : choiceOne;
         [self.chooseButton1 setTitle:@"" forState:UIControlStateNormal];
         [self.chooseButton2 setTitle:song1Title forState:UIControlStateNormal];
         self.firstTrackBckground.backgroundColor = [UIColor funRed];
         self.secondTrackBackground.backgroundColor = [UIColor funRed];
     } else if (self.dragBar.frame.origin.x > self.view.bounds.size.width/2) {
-        NSString *song2Title = ([self.session.secondTrack.title isNotEmpty]) ? self.session.secondTrack.title : choiceTwo;
+        NSString *song2Title = ([self.player.session.secondTrack.title isNotEmpty]) ? self.player.session.secondTrack.title : choiceTwo;
         [self.chooseButton1 setTitle:song2Title forState:UIControlStateNormal];
         [self.chooseButton2 setTitle:@"" forState:UIControlStateNormal];
         self.firstTrackBckground.backgroundColor = [UIColor funYellow];
@@ -144,15 +122,10 @@ static NSString *choiceTwo = @"Choose second song";
 }
 
 - (void)updatePlayers {
-    if (!_isPlaying) {
-        [self startPlayers];
-    }
     if (self.dragBar.frame.origin.x < self.view.bounds.size.width/2) {
-        _audioPlayer1.volume = 1.0;
-        _audioPlayer2.volume = 0.0;
+        [self.player player1Active];
     } else if (self.dragBar.frame.origin.x > self.view.bounds.size.width/2) {
-        _audioPlayer1.volume = 0.0;
-        _audioPlayer2.volume = 1.0;
+        [self.player player2Active];
     }
 }
 
@@ -162,29 +135,21 @@ static NSString *choiceTwo = @"Choose second song";
     return YES;
 }
 
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    if ([player isEqual:_audioPlayer1]) {
-        [self presentViewController:[UIAlertController alertWithTitle:@"Song Finished" message:[NSString stringWithFormat:@"%@ has finished playing", self.session.firstTrack.title] actionHandler:nil] animated:YES completion:nil];
-    } else {
-        [self presentViewController:[UIAlertController alertWithTitle:@"Song Finished" message:[NSString stringWithFormat:@"%@ has finished playing", self.session.secondTrack.title] actionHandler:nil] animated:YES completion:nil];
-    }
-    if (!_audioPlayer1.isPlaying && !_audioPlayer2.isPlaying) {
-        [self resetView];
-    }
-}
-
 - (void)willMoveToParentViewController:(UIViewController *)parent {
     [super willMoveToParentViewController:parent];
     if (!parent){
-        [self clearSession];
+        [self.player clearPlayerSession];
     }
 }
 
-- (void)clearSession {
-    self.session = nil;
-    _audioPlayer1 = nil;
-    _audioPlayer2 = nil;
-    _isNewSession = _isPlaying = NO;
+#pragma mark PlayerView Delegates
+- (BOOL)playersDidFinishPlaying {
+    [self resetView];
+    return YES;
+}
+
+- (void)playerDidFinishPlaying:(UIAlertController *)alert {
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark MPMediaPickerController Delgates
@@ -198,25 +163,20 @@ static NSString *choiceTwo = @"Choose second song";
     MPMediaItem *media = (MPMediaItem *)mediaItemCollection.items.firstObject;
     
     if (_selectedAudioChoice == firstChoice) {
-        self.session.firstTrack = media;
+        self.player.session.firstTrack = media;
         [self.chooseButton1 setTitle:media.title forState:UIControlStateNormal];
-        _audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
-        _audioPlayer1.delegate = self;
+        [self.player setAudioPlayer1: [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil]];
     } else if (_selectedAudioChoice == secondChoice) {
-        self.session.secondTrack = media;
+        self.player.session.secondTrack = media;
         [self.chooseButton2 setTitle:media.title forState:UIControlStateNormal];
-        _audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
-        _audioPlayer2.delegate = self;
+        [self.player setAudioPlayer2:[[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil]];
     }
     
-    if (_audioPlayer1 && _audioPlayer2) {
-        if (_isNewSession) {
-            if ([self.delegate respondsToSelector:@selector(didSetNewSession:)]) {
-                [self.delegate didSetNewSession:self.session];
-            }
-            _isNewSession = NO;
+    if ([self.player playersAreSet] && self.player.isNewSession) {
+        if ([self.delegate respondsToSelector:@selector(didSetNewSession:)]) {
+            [self.delegate didSetNewSession:self.player.session];
         }
-        [self startPlayers];
+        [self.player startPlayers];
     }
     _selectedAudioChoice = zeroChoice;
     [self dismissViewControllerAnimated:YES completion:nil];

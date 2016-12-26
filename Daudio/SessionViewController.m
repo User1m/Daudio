@@ -6,16 +6,15 @@
 //  Copyright © 2016 Claudius Mbemba. All rights reserved.
 //
 
-#import "SessionTableViewCell.h"
 #import "SessionViewController.h"
 #import "PlayerViewController.h"
+#import "SessionDataService.h"
 #import "UIViewController+Storyboard.h"
-#import "Session.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import <Objection/Objection.h>
 
-static NSString *reuseID = @"sessionCell";
+static NSString *dataService = @"dataService";
 
-@interface SessionViewController () <UITableViewDelegate, UITableViewDataSource, PlayerViewControllerDelegate>
+@interface SessionViewController () <UITableViewDelegate,PlayerViewControllerDelegate>
 
 @end
 
@@ -23,13 +22,16 @@ static NSString *reuseID = @"sessionCell";
     PlayerViewController *playerVC;
 }
 
+objection_requires(dataService)
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self.tableView.dataSource = self.dataService;
     playerVC = [PlayerViewController controllerWithStoryboard];
     playerVC.delegate = self;
-    self.savedSessions = [Session loadSessionsFromUserDefaults:NSUserDefaults.standardUserDefaults];
+    self.dataService = [[SessionDataService alloc]initWithDefaults:NSUserDefaults.standardUserDefaults];
+    [self.dataService loadData];
     [self setupRefreshControl];
 }
 
@@ -45,31 +47,15 @@ static NSString *reuseID = @"sessionCell";
     [self.tableView.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
 }
 
--(void)refreshData {
+- (void)refreshData {
     [self.tableView reloadData];
     [self.tableView.refreshControl endRefreshing];
 }
 
 #pragma mark TableView Delegates
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SessionTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-    Session *session = [_savedSessions objectAtIndex:indexPath.row];
-    UIImage *art1 = [session.firstTrack.artwork imageWithSize:cell.firstTrackArtImageView.bounds.size];
-    UIImage *art2 = [session.secondTrack.artwork imageWithSize:cell.secondTrackArtImageView.bounds.size];
-    cell.firstTrackLabel.text = session.firstTrack.title;
-    cell.secondTrackLabel.text = session.secondTrack.title;
-    cell.firstTrackArtImageView.image = (art1) ? art1 : [UIImage imageNamed:@"music"];
-    cell.secondTrackArtImageView.image = (art2) ? art2 : [UIImage imageNamed:@"music"];
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _savedSessions.count;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    playerVC.session = [self.savedSessions objectAtIndex:indexPath.row];
+    playerVC.player.session = [self.dataService.savedSessions objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:playerVC animated:YES];
 }
 
@@ -79,16 +65,17 @@ static NSString *reuseID = @"sessionCell";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.savedSessions removeObjectAtIndex:indexPath.row];
-        [self saveData];
-        [self.tableView reloadData];
+        [self.dataService.savedSessions removeObjectAtIndex:indexPath.row];
+        [self.dataService saveData];
+        [tableView reloadData];
     }
 }
+
 
 #pragma mark Player Delegates
 
 - (void)didSetNewSession:(Session *)session {
-    [self.savedSessions addObject:session];
+    [self.dataService.savedSessions addObject:session];
 }
 
 #pragma mark Actions
@@ -98,11 +85,7 @@ static NSString *reuseID = @"sessionCell";
 }
 
 - (IBAction)saveAllSessions:(id)sender {
-    [self saveData];
-}
-
-- (void)saveData {
-    [Session saveSessions:[self.savedSessions copy] userDefaults:NSUserDefaults.standardUserDefaults];
+    [self.dataService saveData];
 }
 
 @end
