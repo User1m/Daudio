@@ -82,11 +82,11 @@ static NSString *choiceTwo = @"Choose second song";
 }
 
 - (void)didDragBar:(UIPanGestureRecognizer *)gesture {
-    if (_isHorizontalPan) {
+    if (_isHorizontalPan && _audioPlayer1 && _audioPlayer2) {
         CGPoint translation = [gesture translationInView:self.view];
-        CGPoint displacement = (_isHorizontalPan) ? CGPointMake(translation.x, 0) : CGPointMake(0, translation.y);
+//        CGPoint displacement = (_isHorizontalPan) ? CGPointMake(translation.x, 0) : CGPointMake(0, translation.y);
         
-        self.dragBar.transform = CGAffineTransformMakeTranslation(displacement.x, displacement.y);
+        self.dragBar.transform = CGAffineTransformMakeTranslation(translation.x, 0);
         
         [self updateView];
         [self updatePlayers];
