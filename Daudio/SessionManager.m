@@ -14,6 +14,7 @@ static NSString *sessionKey = @"SessionKey";
 @implementation SessionManager
 
 #pragma mark Save/Load
+
 + (void)saveSessions:(NSArray<Session *> *)sessions userDefaults:(NSUserDefaults *)userDefaults  {
     [userDefaults setObject:[self archiveObjects:sessions] forKey:sessionKey];
 }
@@ -38,4 +39,5 @@ static NSString *sessionKey = @"SessionKey";
     }
     return archiveArray;
 }
+
 @end

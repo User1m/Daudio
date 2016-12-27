@@ -5,23 +5,18 @@
 //  Created by Claudius Mbemba on 12/23/16.
 //  Copyright © 2016 Claudius Mbemba. All rights reserved.
 //
+@import AVFoundation;
 @import MediaPlayer;
 #import "UIColor+Utils.h"
 #import "PlayerViewController.h"
 #import "Session.h"
-#import "PlayerView.h"
 #import "NSString+Utils.h"
 #import <Objection/Objection.h>
-#import <AVFoundation/AVAudioPlayer.h>
-
-typedef NS_ENUM(NSUInteger, SongChoice) {
-    firstChoice,
-    secondChoice,
-    zeroChoice
-};
+#import <ChameleonFramework/Chameleon.h>
 
 static NSString *choiceOne = @"Choose first song";
 static NSString *choiceTwo = @"Choose second song";
+static NSString *player = @"player";
 
 @interface PlayerViewController () <PlayerViewDelegate, MPMediaPickerControllerDelegate, UIGestureRecognizerDelegate>
 
@@ -39,14 +34,17 @@ static NSString *choiceTwo = @"Choose second song";
     BOOL _isHorizontalPan;
 }
 
+objection_requires(player)
+
 #pragma mark Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [JSObjection.defaultInjector injectDependencies:self];
     self.player.delegate = self;
     [self setupDragGesture];
     [self setupPicker];
-    [self setupInitialViewState];
+    [self setupView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,15 +85,15 @@ static NSString *choiceTwo = @"Choose second song";
         
         if (gesture.state == UIGestureRecognizerStateEnded) {
             if ([self isCloseToCenter:self.dragBar.frame]) {
-                [self resetView];
+                [self setupView];
                 [self.player stopPlayers];
-                [self setupInitialViewState];
             }
         }
     }
 }
 
-- (void)resetView {
+- (void)setupView {
+    self.view.backgroundColor = [UIColor colorWithGradientStyle:UIGradientStyleRadial withFrame:self.view.bounds andColors:@[[UIColor flatBlueColor], [UIColor flatGreenColor]]];
     self.dragBar.transform = CGAffineTransformMakeTranslation(0,0);
     self.dragBar.center = self.dragBar.center;
     [self setupInitialViewState];
@@ -137,14 +135,18 @@ static NSString *choiceTwo = @"Choose second song";
 
 - (void)willMoveToParentViewController:(UIViewController *)parent {
     [super willMoveToParentViewController:parent];
-    if (!parent){
+    if (!parent) {
         [self.player clearPlayerSession];
     }
+    if (!self.player.session) {
+        self.player.session = [JSObjection.defaultInjector getObject:[Session class]];
+    }
+    [self setupView];
 }
 
 #pragma mark PlayerView Delegates
 - (BOOL)playersDidFinishPlaying {
-    [self resetView];
+    [self setupView];
     return YES;
 }
 
@@ -165,19 +167,20 @@ static NSString *choiceTwo = @"Choose second song";
     if (_selectedAudioChoice == firstChoice) {
         self.player.session.firstTrack = media;
         [self.chooseButton1 setTitle:media.title forState:UIControlStateNormal];
-        [self.player setAudioPlayer1: [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil]];
+        [self.player setAudioPlayer:PlayerOne media:media];
     } else if (_selectedAudioChoice == secondChoice) {
         self.player.session.secondTrack = media;
         [self.chooseButton2 setTitle:media.title forState:UIControlStateNormal];
-        [self.player setAudioPlayer2:[[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil]];
+        [self.player setAudioPlayer:PlayerTwo media:media];
     }
     
-    if ([self.player playersAreSet] && self.player.isNewSession) {
+    if ([self.player playersAreSet]) {
         if ([self.delegate respondsToSelector:@selector(didSetNewSession:)]) {
             [self.delegate didSetNewSession:self.player.session];
         }
-        [self.player startPlayers];
     }
+    [self.player startPlayers];
+
     _selectedAudioChoice = zeroChoice;
     [self dismissViewControllerAnimated:YES completion:nil];
 }

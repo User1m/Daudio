@@ -14,5 +14,6 @@
 
 @property (nonatomic, strong) MPMediaItem *firstTrack;
 @property (nonatomic, strong) MPMediaItem *secondTrack;
+@property BOOL isNewSession;
 
 @end

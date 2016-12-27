@@ -6,6 +6,7 @@
 //  Copyright © 2016 Claudius Mbemba. All rights reserved.
 //
 
+@import AVFoundation;
 #import <XCTest/XCTest.h>
 #import "PlayerView.h"
 #import "Session.h"
@@ -14,11 +15,16 @@
 
 @end
 
-@implementation PlayerViewTests
+@implementation PlayerViewTests {
+    Session *session;
+    PlayerView *sut;
+}
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    //given
+    session = [Session new];
+    sut = [[PlayerView alloc]initWithSession:session];
 }
 
 - (void)tearDown {
@@ -27,13 +33,18 @@
 }
 
 - (void)testPlayerView_ShouldCanBeSetWithSession {
-    
-    //given
-    Session *session = [Session new];
-    PlayerView *sut = [[PlayerView alloc]initWithSession:session];
-    
     //then
     XCTAssertEqualObjects(sut.session, session);
+}
+
+- (void)testPlayerView_CanStartPlayers {
+    //when
+    [sut startPlayers];
+    
+    //then
+    XCTAssertTrue(sut.isPlaying);
+    XCTAssertEqual(sut.audioPlayer1.volume, 1.0);
+    XCTAssertEqual(sut.audioPlayer2.volume, 0.0);
 }
 
 

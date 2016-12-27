@@ -14,7 +14,7 @@
 
 static NSString *dataService = @"dataService";
 
-@interface SessionViewController () <UITableViewDelegate,PlayerViewControllerDelegate>
+@interface SessionViewController () <UITableViewDelegate, PlayerViewControllerDelegate>
 
 @end
 
@@ -22,22 +22,30 @@ static NSString *dataService = @"dataService";
     PlayerViewController *playerVC;
 }
 
-objection_requires(dataService)
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self.dataService;
-    playerVC = [PlayerViewController controllerWithStoryboard];
-    playerVC.delegate = self;
-    self.dataService = [[SessionDataService alloc]initWithDefaults:NSUserDefaults.standardUserDefaults];
-    [self.dataService loadData];
+    [self setupDependencies];
     [self setupRefreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+}
+
+- (void)refreshData {
+    [self.tableView reloadData];
+    [self.tableView.refreshControl endRefreshing];
+}
+
+#pragma mark Setups
+
+- (void)setupDependencies {
+    self.dataService = [[SessionDataService alloc]initWithDefaults:NSUserDefaults.standardUserDefaults];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self.dataService;
+    playerVC = [PlayerViewController controllerWithStoryboard];
+    playerVC.delegate = self;
 }
 
 - (void)setupRefreshControl {
@@ -47,11 +55,6 @@ objection_requires(dataService)
     [self.tableView.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)refreshData {
-    [self.tableView reloadData];
-    [self.tableView.refreshControl endRefreshing];
-}
-
 #pragma mark TableView Delegates
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,23 +62,10 @@ objection_requires(dataService)
     [self.navigationController pushViewController:playerVC animated:YES];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.dataService.savedSessions removeObjectAtIndex:indexPath.row];
-        [self.dataService saveData];
-        [tableView reloadData];
-    }
-}
-
-
 #pragma mark Player Delegates
 
 - (void)didSetNewSession:(Session *)session {
-    [self.dataService.savedSessions addObject:session];
+    [self.dataService addSession:session];
 }
 
 #pragma mark Actions

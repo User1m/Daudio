@@ -22,7 +22,9 @@
 		DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */; };
 		DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */; };
 		DC71BC2F1E0F1E0E00190871 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */; };
-		DC71BC321E0F236100190871 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC311E0F236100190871 /* PlayerView.m */; };
+		DC71BC321E0F236100190871 /* PlayerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BC311E0F236100190871 /* PlayerViewModel.m */; };
+		DCD4CD121E12E30A00CF368D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD4CD111E12E30A00CF368D /* AVFoundation.framework */; };
+		DCD4CD181E1335C700CF368D /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD4CD171E1335C700CF368D /* PlayerView.m */; };
 		DCDE02041E119AED005B7D8A /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02031E119AED005B7D8A /* SessionManager.m */; };
 		DCDE02071E119B19005B7D8A /* SessionDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02061E119B19005B7D8A /* SessionDataService.m */; };
 		DCDE02091E119B46005B7D8A /* SessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDE02081E119B46005B7D8A /* SessionTests.m */; };
@@ -78,8 +80,11 @@
 		DC71BC2B1E0F09D700190871 /* UIAlertController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Utils.m"; sourceTree = "<group>"; };
 		DC71BC2D1E0F1E0E00190871 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
 		DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
-		DC71BC301E0F236100190871 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
-		DC71BC311E0F236100190871 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		DC71BC301E0F236100190871 /* PlayerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewModel.h; sourceTree = "<group>"; };
+		DC71BC311E0F236100190871 /* PlayerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewModel.m; sourceTree = "<group>"; };
+		DCD4CD111E12E30A00CF368D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DCD4CD161E1335C700CF368D /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		DCD4CD171E1335C700CF368D /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 		DCDE02021E119AED005B7D8A /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		DCDE02031E119AED005B7D8A /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 		DCDE02051E119B19005B7D8A /* SessionDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDataService.h; sourceTree = "<group>"; };
@@ -100,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD4CD121E12E30A00CF368D /* AVFoundation.framework in Frameworks */,
 				F84523C184ECA392459EE3B0 /* Pods_Daudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +124,7 @@
 		2472A6FE14E4F39EDD0A024A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCD4CD111E12E30A00CF368D /* AVFoundation.framework */,
 				114B8EFE7678D6AF2B28B7B1 /* Pods_Daudio.framework */,
 				D822A0D67092E8D648332525 /* Pods_DaudioTests.framework */,
 			);
@@ -186,8 +193,8 @@
 			children = (
 				DC71BC151E0EF49700190871 /* Session.h */,
 				DC71BC161E0EF49700190871 /* Session.m */,
-				DC71BC301E0F236100190871 /* PlayerView.h */,
-				DC71BC311E0F236100190871 /* PlayerView.m */,
+				DC71BC301E0F236100190871 /* PlayerViewModel.h */,
+				DC71BC311E0F236100190871 /* PlayerViewModel.m */,
 				DCDE02021E119AED005B7D8A /* SessionManager.h */,
 				DCDE02031E119AED005B7D8A /* SessionManager.m */,
 			);
@@ -212,6 +219,8 @@
 			children = (
 				DC71BC271E0EF9D100190871 /* SessionTableViewCell.h */,
 				DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */,
+				DCD4CD161E1335C700CF368D /* PlayerView.h */,
+				DCD4CD171E1335C700CF368D /* PlayerView.m */,
 				DC71BBEE1E0E101800190871 /* PlayerViewController.storyboard */,
 				DC71BC1B1E0EF51100190871 /* SessionViewController.storyboard */,
 			);
@@ -484,7 +493,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC71BC321E0F236100190871 /* PlayerView.m in Sources */,
+				DC71BC321E0F236100190871 /* PlayerViewModel.m in Sources */,
+				DCD4CD181E1335C700CF368D /* PlayerView.m in Sources */,
 				DCDE02071E119B19005B7D8A /* SessionDataService.m in Sources */,
 				DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */,
 				DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */,
@@ -562,6 +572,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -609,6 +620,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

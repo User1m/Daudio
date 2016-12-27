@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>OCHamcrest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,9 +39,24 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwipeView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>418EC5D83A390DAD8FCE6A0E2A432044</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A267660E1AD4832DE75665F2F87AEA3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8F5682E0AC126B1910FC04BA8A16F382</key>
 		<dict>
 			<key>primary</key>
@@ -52,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5AD4940BB7C3FA1B7026D51C89E93BB</key>
+		<key>B79E791F10B6AECAA91693ADFDA400B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

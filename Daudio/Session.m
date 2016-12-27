@@ -19,11 +19,17 @@ static NSString *secondTrack = @"secondTrack";
 
 @implementation Session
 
-objection_requires(firstTrack, secondTrack)
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _isNewSession = YES;
+    }
+    return self;
+}
 
 #pragma mark NSCoding
 - (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
+    self = [self init];
     if (self) {
         self.firstTrack = [decoder decodeObjectForKey:firstTrack];
         self.secondTrack = [decoder decodeObjectForKey:secondTrack];

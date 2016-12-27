@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PlayerView.h"
+#import "PlayerViewModel.h"
 
 @class Session;
 
@@ -15,11 +15,17 @@
 - (void)didSetNewSession:(Session *)session;
 @end
 
+typedef NS_ENUM(NSUInteger, SongChoice) {
+    firstChoice,
+    secondChoice,
+    zeroChoice
+};
+
 @interface PlayerViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *dragBar;
 @property (nonatomic, weak) id<PlayerViewControllerDelegate> delegate;
-@property (nonatomic, strong) PlayerView *player;
+@property (nonatomic, strong) PlayerViewModel *player;
 
 @end
 

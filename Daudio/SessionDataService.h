@@ -14,12 +14,13 @@
 
 @interface SessionDataService : NSObject <UITableViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray<Session *> *savedSessions;
+@property (nonatomic, strong, readonly) NSMutableArray<Session *> *savedSessions;
 @property (nonatomic, strong) NSUserDefaults *userDefaults;
 
 - (instancetype)initWithDefaults:(NSUserDefaults *)defaults;
 - (void)saveData;
 - (void)loadData;
-
+- (void)removeSession:(NSUInteger)idx;
+- (void)addSession:(Session *)session;
 
 @end

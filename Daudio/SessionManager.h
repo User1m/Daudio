@@ -13,7 +13,6 @@
 @interface SessionManager : NSObject
 
 + (void)saveSessions:(NSArray<Session *> *)sessions userDefaults:(NSUserDefaults *)userDefaults;
-
 + (NSMutableArray<Session *>*)loadSessionsFromUserDefaults:(NSUserDefaults *)userDefaults;
 
 @end
