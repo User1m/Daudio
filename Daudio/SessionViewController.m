@@ -13,8 +13,11 @@
 #import "UIViewController+Storyboard.h"
 #import <Objection/Objection.h>
 #import "UIAlertController+Utils.h"
+#import <ChameleonFramework/Chameleon.h>
 
 static NSString *dataService = @"dataService";
+
+@class PlayerViewModel;
 
 @interface SessionViewController () <MPMediaPickerControllerDelegate, UITableViewDelegate, PlayerViewControllerDelegate>
 
@@ -28,19 +31,20 @@ static NSString *dataService = @"dataService";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDependencies];
-    [self setupPicker];
     [self setupRefreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+    self.navigationController.navigationBar.barTintColor =  [UIColor colorWithRandomColorInArray:@[[UIColor flatBlueColor], [UIColor flatRedColor], [UIColor flatPlumColor]]];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithContrastingBlackOrWhiteColorOn:self.navigationController.navigationBar.barTintColor isFlat:YES];
 }
 
 - (void)refreshData {
     [self.tableView reloadData];
     [self.tableView.refreshControl endRefreshing];
 }
+
 
 #pragma mark Setups
 
@@ -56,6 +60,7 @@ static NSString *dataService = @"dataService";
     self.tableView.dataSource = self.dataService;
     playerVC = [PlayerViewController controllerWithStoryboard];
     playerVC.delegate = self;
+    playerVC.playerVM = [JSObjection.defaultInjector getObject:[PlayerViewModel class]];
 }
 
 - (void)setupRefreshControl {
@@ -69,20 +74,16 @@ static NSString *dataService = @"dataService";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     playerVC.playerVM.session = [self.dataService.savedSessions objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:playerVC animated:YES];
-}
-
-#pragma mark Player Delegates
-
-- (void)didSetNewSession:(Session *)session {
-    [self.dataService addSession:session];
+    [self.navigationController presentViewController:playerVC animated:YES completion:nil];
 }
 
 #pragma mark Actions
 
 - (IBAction)createNewSession:(id)sender {
+    [self setupPicker];
     //TODO: user picks 2(limit) songs
     [self presentViewController:_mediaPicker animated:YES completion:nil];
+//    [self.navigationController presentViewController:playerVC animated:YES completion:nil];
 }
 
 - (IBAction)saveAllSessions:(id)sender {
@@ -96,14 +97,21 @@ static NSString *dataService = @"dataService";
 }
 
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection {
-    if (mediaItemCollection.items.firstObject) {
-        [playerVC.playerVM setAudioPlayer:PlayerOne media: (MPMediaItem *)mediaItemCollection.items.firstObject];
+    Session * session;
+    if (mediaItemCollection.items.count > 1) {
+        session = [[Session alloc]initWithTrack:mediaItemCollection.items.firstObject track:mediaItemCollection.items[1]];
+        playerVC.playerVM.session = session;
+    } else if (mediaItemCollection.items.firstObject) {
+        session = [Session new];
+        playerVC.playerVM.session = session;
+        playerVC.playerVM.session.firstTrack = mediaItemCollection.items.firstObject;
     }
-    if (mediaItemCollection.items[1]) {
-        [playerVC.playerVM setAudioPlayer:PlayerTwo media: (MPMediaItem *)mediaItemCollection.items[1]];
-    }
+    [self.dataService addSession:session];
+    _mediaPicker = nil;
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.navigationController pushViewController:playerVC animated:YES];
+        [self.navigationController presentViewController:playerVC animated:YES completion:^{
+            [self.tableView reloadData];
+        }];
     }];
 }
 

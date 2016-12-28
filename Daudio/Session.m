@@ -27,6 +27,15 @@ static NSString *secondTrack = @"secondTrack";
     return self;
 }
 
+- (instancetype)initWithTrack:(MPMediaItem *)track1 track:(MPMediaItem *)track2{
+    self = [self init];
+    if (self) {
+        self.firstTrack = track1;
+        self.secondTrack = track2;
+    }
+    return self;
+}
+
 #pragma mark NSCoding
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [self init];

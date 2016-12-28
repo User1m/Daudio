@@ -53,7 +53,7 @@
 
 - (void)testSDSTableView_ShouldReturnCorrectSaveSessionsCount {
     //given
-    sut.savedSessions = [@[[Session new],[Session new]] mutableCopy];
+//    sut.savedSessions = [@[[Session new],[Session new]] mutableCopy];
     
     //when
     NSUInteger tableCount = [sut tableView:table numberOfRowsInSection:0];

@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Session.h"
 
-@class Session, AVAudioPlayer, MPMediaItem;
+@class AVAudioPlayer, MPMediaItem;
 
 @protocol PlayerViewModelDelegate <NSObject>
 
 - (void)playerDidFinishPlaying:(UIAlertController *)alert;
-- (BOOL)playersDidFinishPlaying;
+- (void)collectionViewDidSwitch;
 
 @end
 
@@ -27,11 +28,12 @@ typedef NS_ENUM(NSUInteger, AudioPlayers) {
 @property (nonatomic, strong) id<PlayerViewModelDelegate>delegate;
 @property (nonatomic, strong, readonly) AVAudioPlayer *audioPlayer1;
 @property (nonatomic, strong, readonly) AVAudioPlayer *audioPlayer2;
-
-@property (nonatomic) BOOL isPlaying;
+@property (nonatomic) AudioPlayers currentPlayer;
 
 - (instancetype)initWithSession:(Session *)session;
 - (void)setAudioPlayer:(AudioPlayers)player media:(MPMediaItem *)media;
+- (NSString *)titleForTrack:(TrackNumber)track;
+- (NSString *)artistForTrack:(TrackNumber)track;
 
 - (void)startPlayer:(AudioPlayers)player;
 - (void)stopPlayer:(AudioPlayers)player;
@@ -40,9 +42,17 @@ typedef NS_ENUM(NSUInteger, AudioPlayers) {
 - (void)rewindPlayer:(AudioPlayers)player;
 - (void)fastFwdPlayer:(AudioPlayers)player;
 
+- (void)startPlayers:(TrackNumber)track;
+- (void)stopPlayers;
+- (void)pausePlayers;
+- (void)resetPlayers;
+- (void)rewindPlayers;
+- (void)fastFwdPlayers;
+
+- (void)switchToTrack:(TrackNumber)track;
 - (BOOL)sessionIsNew;
 
 - (BOOL)playersAreSet;
-- (void)clearPlayerSession;
+//- (void)clearPlayerSession;
 
 @end

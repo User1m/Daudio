@@ -10,16 +10,16 @@
 @import MediaPlayer;
 #import "PlayerViewModel.h"
 #import "PlayerCollectionViewCell.h"
-#import "Session.h"
 #import <Objection/Objection.h>
 #import "UIAlertController+Utils.h"
 
+static NSString *musicImage = @"music";
 static NSString *cellID = @"collectionCell";
 static NSString *session = @"session";
 static NSString *delegate = @"delegate";
 static NSString *audioPlayer1 = @"audioPlayer1";
 static NSString *audioPlayer2 = @"audioPlayer2";
-const NSUInteger skipTime = 10;
+const NSUInteger skipTime = 5;
 
 @interface PlayerViewModel() <AVAudioPlayerDelegate>
 
@@ -28,9 +28,7 @@ const NSUInteger skipTime = 10;
 
 @end
 
-@implementation PlayerViewModel {
-    TrackNumber _track;
-}
+@implementation PlayerViewModel
 
 objection_requires(session)
 
@@ -50,17 +48,38 @@ objection_requires(session)
     return self;
 }
 
-- (void)player1Active {
-    self.audioPlayer1.volume = 1.0;
-    self.audioPlayer2.volume = 0.0;
-}
-
-- (void)player2Active {
-    self.audioPlayer1.volume = 0.0;
-    self.audioPlayer2.volume = 1.0;
-}
-
 #pragma mark Player Controls
+
+- (void)startPlayers:(TrackNumber)track {
+    [self startPlayer:PlayerOne];
+    [self startPlayer:PlayerTwo];
+    [self switchToTrack:track];
+}
+
+- (void)stopPlayers {
+    [self stopPlayer:PlayerOne];
+    [self stopPlayer:PlayerTwo];
+}
+
+- (void)pausePlayers {
+    [self pausePlayer:PlayerOne];
+    [self pausePlayer:PlayerTwo];
+}
+
+- (void)resetPlayers {
+    [self resetPlayer:PlayerOne];
+    [self resetPlayer:PlayerTwo];
+}
+
+- (void)rewindPlayers {
+    [self rewindPlayer:PlayerOne];
+    [self rewindPlayer:PlayerTwo];
+}
+
+- (void)fastFwdPlayers {
+    [self fastFwdPlayer:PlayerOne];
+    [self fastFwdPlayer:PlayerTwo];
+}
 
 - (void)startPlayer:(AudioPlayers)player {
     (player == PlayerOne) ? [self.audioPlayer1 play] : [self.audioPlayer2 play];
@@ -94,25 +113,14 @@ objection_requires(session)
     return self.session.isNewSession;
 }
 
-- (void)switchTracks {
-    _track = (_track == TrackOne) ? TrackTwo : TrackOne;
-    //TODO:
-}
-
-- (void)startPlayers {
-    self.isPlaying = YES;
-    [self.audioPlayer1 play];
-    self.audioPlayer1.volume = 1.0;
-    [self.audioPlayer2 play];
-    self.audioPlayer2.volume = 0.0;
-}
-
-
-- (void)clearPlayerSession {
-    self.session = nil;
-    self.audioPlayer1 = nil;
-    self.audioPlayer2 = nil;
-    self.isPlaying = NO;
+- (void)switchToTrack:(TrackNumber)track {
+    if (track == TrackOne) {
+        self.audioPlayer1.volume = 1.0;
+        self.audioPlayer2.volume = 0.0;
+    } else {
+        self.audioPlayer2.volume = 1.0;
+        self.audioPlayer1.volume = 0.0;
+    }
 }
 
 - (BOOL)playersAreSet {
@@ -122,25 +130,34 @@ objection_requires(session)
 - (void)setSession:(Session *)session {
     _session = session;
     if (session.firstTrack && session.secondTrack) {
-        self.audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[session.firstTrack valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
-        self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[session.secondTrack valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
-        self.audioPlayer1.delegate = self;
-        self.audioPlayer2.delegate = self;
-        [self startPlayers];
+        [self setAudioPlayer:PlayerOne media:session.firstTrack];
+        [self setAudioPlayer:PlayerTwo media:session.secondTrack];
     }
 }
 
 - (void)setAudioPlayer:(AudioPlayers)player media:(MPMediaItem *)media {
     switch (player) {
         case PlayerOne:
+            self.audioPlayer1 = nil;
             self.audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
+            self.audioPlayer1.volume = 1.0;
             self.audioPlayer1.delegate = self;
             break;
         case PlayerTwo:
+            self.audioPlayer2 = nil;
             self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
+            self.audioPlayer2.volume = 1.0;
             self.audioPlayer2.delegate = self;
             break;
     }
+}
+
+- (NSString *)titleForTrack:(TrackNumber)track {
+    return (track == TrackOne) ? self.session.firstTrack.title : self.session.secondTrack.title;
+}
+
+- (NSString *)artistForTrack:(TrackNumber)track {
+    return (track == TrackOne) ? self.session.firstTrack.artist : self.session.secondTrack.artist;
 }
 
 #pragma mark AVAudioPlayer Delegates
@@ -150,9 +167,6 @@ objection_requires(session)
         [self.delegate playerDidFinishPlaying:[UIAlertController alertWithTitle:@"Song Finished" message:[NSString stringWithFormat:@"%@ has finished playing", self.session.firstTrack.title] actionHandler:nil]];
     } else {
         [self.delegate playerDidFinishPlaying:[UIAlertController alertWithTitle:@"Song Finished" message:[NSString stringWithFormat:@"%@ has finished playing", self.session.secondTrack.title] actionHandler:nil]];
-    }
-    if (!self.audioPlayer1.isPlaying && !self.audioPlayer2.isPlaying) {
-        [self.delegate playersDidFinishPlaying];
     }
 }
 
@@ -164,9 +178,18 @@ objection_requires(session)
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlayerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    cell.playerImageView.image = [UIImage imageNamed:@"art1"];
+    UIImage *image = (indexPath.row == 0) ? [self.session getArt:TrackOne size:cell.bounds.size] :  [self.session getArt:TrackTwo size:cell.bounds.size];
+    if (!image) {
+        image = [UIImage imageNamed:musicImage];
+    }
+    cell.playerImageView.image = image;
     return cell;
 }
 
+#pragma mark UIScrollView Delegates
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self.delegate collectionViewDidSwitch];
+}
 
 @end

@@ -193,8 +193,6 @@
 			children = (
 				DC71BC151E0EF49700190871 /* Session.h */,
 				DC71BC161E0EF49700190871 /* Session.m */,
-				DC71BC301E0F236100190871 /* PlayerViewModel.h */,
-				DC71BC311E0F236100190871 /* PlayerViewModel.m */,
 				DCDE02021E119AED005B7D8A /* SessionManager.h */,
 				DCDE02031E119AED005B7D8A /* SessionManager.m */,
 			);
@@ -204,12 +202,8 @@
 		DC71BC121E0EF42500190871 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DCDE02051E119B19005B7D8A /* SessionDataService.h */,
-				DCDE02061E119B19005B7D8A /* SessionDataService.m */,
-				DC71BC181E0EF4FC00190871 /* SessionViewController.h */,
-				DC71BC191E0EF4FC00190871 /* SessionViewController.m */,
-				DC71BBEB1E0E101800190871 /* PlayerViewController.h */,
-				DC71BBEC1E0E101800190871 /* PlayerViewController.m */,
+				DCCB73BB1E135E96002DE86A /* Session */,
+				DCCB73BA1E135E86002DE86A /* Player */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -217,10 +211,7 @@
 		DC71BC131E0EF42E00190871 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DC71BC271E0EF9D100190871 /* SessionTableViewCell.h */,
-				DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */,
-				DC99BDC91E1349F300E46F14 /* PlayerCollectionViewCell.h */,
-				DC99BDCA1E1349F300E46F14 /* PlayerCollectionViewCell.m */,
+				DCCB73BC1E135EA9002DE86A /* Cells */,
 				DC71BBEE1E0E101800190871 /* PlayerViewController.storyboard */,
 				DC71BC1B1E0EF51100190871 /* SessionViewController.storyboard */,
 			);
@@ -240,6 +231,39 @@
 				DC71BC2E1E0F1E0E00190871 /* NSString+Utils.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		DCCB73BA1E135E86002DE86A /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				DC71BC301E0F236100190871 /* PlayerViewModel.h */,
+				DC71BC311E0F236100190871 /* PlayerViewModel.m */,
+				DC71BBEB1E0E101800190871 /* PlayerViewController.h */,
+				DC71BBEC1E0E101800190871 /* PlayerViewController.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		DCCB73BB1E135E96002DE86A /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				DCDE02051E119B19005B7D8A /* SessionDataService.h */,
+				DCDE02061E119B19005B7D8A /* SessionDataService.m */,
+				DC71BC181E0EF4FC00190871 /* SessionViewController.h */,
+				DC71BC191E0EF4FC00190871 /* SessionViewController.m */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		DCCB73BC1E135EA9002DE86A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DC71BC271E0EF9D100190871 /* SessionTableViewCell.h */,
+				DC71BC281E0EF9D100190871 /* SessionTableViewCell.m */,
+				DC99BDC91E1349F300E46F14 /* PlayerCollectionViewCell.h */,
+				DC99BDCA1E1349F300E46F14 /* PlayerCollectionViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		DCDE01FF1E1199F7005B7D8A /* ModelTests */ = {

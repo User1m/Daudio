@@ -12,7 +12,7 @@
         <!--Player View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="PlayerViewController" id="BYZ-38-t0r" customClass="PlayerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerViewController" id="BYZ-38-t0r" userLabel="Player View Controller" customClass="PlayerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WoQ-hK-LKP">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WoQ-hK-LKP">
                                 <rect key="frame" x="16" y="163" width="343" height="348"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="20d-o1-NjK">
@@ -56,17 +56,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controlla" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btz-tM-eS0">
-                                <rect key="frame" x="57" y="73" width="261" height="59"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="S51-M5-8Vu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drake" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcs-lE-gfR">
-                                <rect key="frame" x="142" y="120" width="91" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drake" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcs-lE-gfR">
+                                <rect key="frame" x="16" y="62" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,37 +65,91 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-Mi-EdI">
                                 <rect key="frame" x="0.0" y="554" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="IDC-Gk-4J6"/>
-                                    <barButtonItem systemItem="rewind" id="VXq-b0-iXI"/>
+                                    <barButtonItem title="All   " style="plain" id="bNa-P9-O5s">
+                                        <connections>
+                                            <action selector="handleAppTypeSwitch:" destination="BYZ-38-t0r" id="Kl1-pD-j7b"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="13b-a3-Fg4"/>
+                                    <barButtonItem systemItem="rewind" id="VXq-b0-iXI">
+                                        <connections>
+                                            <action selector="handleRewindButton:" destination="BYZ-38-t0r" id="tcv-Or-0bd"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="r6R-9a-BxV"/>
-                                    <barButtonItem systemItem="play" id="1Z0-Dy-8Gb"/>
+                                    <barButtonItem systemItem="pause" id="xVk-SR-nO1">
+                                        <connections>
+                                            <action selector="handlePauseButton:" destination="BYZ-38-t0r" id="mBY-H0-KXZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hO9-1P-rRs"/>
+                                    <barButtonItem systemItem="play" id="1Z0-Dy-8Gb">
+                                        <connections>
+                                            <action selector="handlePlayButton:" destination="BYZ-38-t0r" id="jWj-SG-vXU"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="XXz-oG-BgM"/>
-                                    <barButtonItem systemItem="fastForward" id="P5S-0a-tEY"/>
+                                    <barButtonItem systemItem="fastForward" id="P5S-0a-tEY">
+                                        <connections>
+                                            <action selector="handleFastForwardButton:" destination="BYZ-38-t0r" id="DIW-cI-tf5"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="G4u-6f-Rqw"/>
-                                    <barButtonItem systemItem="refresh" id="tG5-uR-cnG"/>
+                                    <barButtonItem systemItem="refresh" id="tG5-uR-cnG">
+                                        <connections>
+                                            <action selector="handleResetButton:" destination="BYZ-38-t0r" id="aSq-aN-lZ3"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMJ-bD-bQX">
+                                <rect key="frame" x="16" y="32" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="eFn-qW-yys"/>
+                                </constraints>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gvA-Ai-PWU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controlla" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btz-tM-eS0">
+                                <rect key="frame" x="16" y="79" width="343" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="syn-Lg-rpv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WoQ-hK-LKP" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9lO-3n-0JI"/>
+                            <constraint firstItem="btz-tM-eS0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EbK-OC-1gg"/>
                             <constraint firstAttribute="trailing" secondItem="FWx-Mi-EdI" secondAttribute="trailing" id="FAF-eO-YcJ"/>
+                            <constraint firstItem="WoQ-hK-LKP" firstAttribute="top" secondItem="btz-tM-eS0" secondAttribute="bottom" constant="25" id="N61-jW-jT3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WoQ-hK-LKP" secondAttribute="bottom" constant="156" id="R1N-hI-6iG"/>
-                            <constraint firstItem="WoQ-hK-LKP" firstAttribute="centerX" secondItem="btz-tM-eS0" secondAttribute="centerX" id="TBz-wa-sFQ"/>
                             <constraint firstItem="WoQ-hK-LKP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WRQ-uc-bzK"/>
                             <constraint firstItem="WoQ-hK-LKP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="3.5" id="X0L-dM-swc"/>
                             <constraint firstItem="FWx-Mi-EdI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="242.5" id="Z9S-Ok-cm6"/>
-                            <constraint firstItem="dcs-lE-gfR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="coN-eb-MOc"/>
-                            <constraint firstItem="btz-tM-eS0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="41" id="gUC-8e-WfM"/>
-                            <constraint firstItem="btz-tM-eS0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="53" id="ixg-uW-TG6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dcs-lE-gfR" secondAttribute="trailing" constant="126" id="o94-Xf-nfe"/>
+                            <constraint firstItem="dcs-lE-gfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aAw-Vz-Ln9"/>
+                            <constraint firstItem="nMJ-bD-bQX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="dRV-fb-Bzv"/>
+                            <constraint firstItem="nMJ-bD-bQX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pHt-QE-0cx"/>
+                            <constraint firstItem="WoQ-hK-LKP" firstAttribute="top" secondItem="dcs-lE-gfR" secondAttribute="bottom" constant="80" id="t6w-uT-Ia0"/>
+                            <constraint firstItem="btz-tM-eS0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="tV4-ps-nId"/>
                             <constraint firstItem="FWx-Mi-EdI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="teV-ya-PmZ"/>
-                            <constraint firstItem="dcs-lE-gfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="126" id="xY8-AD-DIK"/>
+                            <constraint firstItem="dcs-lE-gfR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="v1X-7p-xpZ"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="LCr-xg-D6g"/>
+                    </toolbarItems>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="appTypeButton" destination="bNa-P9-O5s" id="Pfa-F8-Gul"/>
                         <outlet property="collectionView" destination="WoQ-hK-LKP" id="Tox-ED-CGs"/>
                         <outlet property="fastFoward" destination="P5S-0a-tEY" id="6Ng-iS-tDZ"/>
+                        <outlet property="pauseButton" destination="xVk-SR-nO1" id="1ie-zD-RlH"/>
                         <outlet property="playButton" destination="1Z0-Dy-8Gb" id="PuB-Es-rnC"/>
                         <outlet property="playerControlBar" destination="FWx-Mi-EdI" id="Tdx-FW-XTJ"/>
                         <outlet property="resetButton" destination="tG5-uR-cnG" id="Z3u-Dh-OaN"/>
