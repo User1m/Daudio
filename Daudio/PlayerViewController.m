@@ -140,7 +140,10 @@ objection_requires(playerVM)
 }
 
 - (void)collectionViewDidSwitch {
-    _currentTrack = (_currentTrack == TrackOne) ? TrackTwo : TrackOne;
+    //https://stackoverflow.com/questions/13176333/ios6-uicollectionview-and-uipagecontrol-how-to-get-visible-cell
+    CGFloat pageWidth = self.collectionView.frame.size.width;
+    CGFloat idx = ceilf(self.collectionView.contentOffset.x / pageWidth);
+    _currentTrack = (NSUInteger)idx;
     [self updateViewLabels];
     [self.playerVM setVolumeToTrack:_currentTrack];
 }

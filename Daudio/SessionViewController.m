@@ -81,7 +81,7 @@ static NSString *dataService = @"dataService";
 - (IBAction)createNewSession:(id)sender {
     [self setupPicker];
     [self presentViewController:_mediaPicker animated:YES completion:nil];
-    //    [self.navigationController presentViewController:playerVC animated:YES completion:nil];
+//            [self.navigationController presentViewController:playerVC animated:YES completion:nil];
 }
 
 - (IBAction)saveAllSessions:(id)sender {
