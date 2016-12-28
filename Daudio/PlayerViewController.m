@@ -129,11 +129,9 @@ objection_requires(playerVM)
 
 - (IBAction)handleResetButton:(id)sender {
     if (_currentType == AllTracks) {
-        [self.playerVM resetPlayers];
-        [self.playerVM startPlayers:_currentTrack];
+        [self.playerVM resetPlayersWithTrack: _currentTrack];
     } else {
         [self.playerVM resetPlayerForTrack:_currentTrack];
-        [self.playerVM startPlayerForTrack:_currentTrack];
     }
 }
 
@@ -144,7 +142,7 @@ objection_requires(playerVM)
 - (void)collectionViewDidSwitch {
     _currentTrack = (_currentTrack == TrackOne) ? TrackTwo : TrackOne;
     [self updateViewLabels];
-    [self.playerVM switchToTrack:_currentTrack];
+    [self.playerVM setVolumeToTrack:_currentTrack];
 }
 
 @end

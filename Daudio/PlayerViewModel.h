@@ -30,21 +30,23 @@
 - (NSString *)titleForTrack:(TrackNumber)track;
 - (NSString *)artistForTrack:(TrackNumber)track;
 
+//single player
 - (void)startPlayerForTrack:(TrackNumber)track;
 - (void)stopPlayerForTrack:(TrackNumber)track;
 - (void)pausePlayerForTrack:(TrackNumber)track;
 - (void)resetPlayerForTrack:(TrackNumber)track;
 - (void)rewindPlayerForTrack:(TrackNumber)track;
 - (void)fastFwdPlayerForTrack:(TrackNumber)track;
+- (void)setVolumeToTrack:(TrackNumber)track;
 
+//all players
 - (void)startPlayers:(TrackNumber)track;
 - (void)stopPlayers;
 - (void)pausePlayers;
-- (void)resetPlayers;
+- (void)resetPlayersWithTrack:(TrackNumber)track;
 - (void)rewindPlayers;
 - (void)fastFwdPlayers;
 
-- (void)switchToTrack:(TrackNumber)track;
 - (void)clearPlayerSession;
 
 @end

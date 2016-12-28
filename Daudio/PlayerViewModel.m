@@ -53,7 +53,7 @@ objection_requires(session)
 - (void)startPlayers:(TrackNumber)track {
     [self startPlayerForTrack:TrackOne];
     [self startPlayerForTrack:TrackTwo];
-    [self switchToTrack:track];
+    [self setVolumeToTrack:track];
 }
 
 - (void)stopPlayers {
@@ -66,9 +66,10 @@ objection_requires(session)
     [self pausePlayerForTrack:TrackTwo];
 }
 
-- (void)resetPlayers {
+- (void)resetPlayersWithTrack:(TrackNumber)track {
     [self resetPlayerForTrack:TrackOne];
     [self resetPlayerForTrack:TrackTwo];
+    [self startPlayers:track];
 }
 
 - (void)rewindPlayers {
@@ -83,37 +84,52 @@ objection_requires(session)
 
 - (void)startPlayerForTrack:(TrackNumber)track {
     (track == TrackOne) ? [self.audioPlayer1 play] : [self.audioPlayer2 play];
+    [self setVolumeToTrack:track];
 }
 
 - (void)stopPlayerForTrack:(TrackNumber)track {
-    (track == TrackOne) ? [self.audioPlayer1 stop] : [self.audioPlayer2 stop];
+    if ([self isPlaying:track]) {
+        (track == TrackOne) ? [self.audioPlayer1 stop] : [self.audioPlayer2 stop];
+    }
 }
 
 - (void)pausePlayerForTrack:(TrackNumber)track {
-    (track == TrackOne) ? [self.audioPlayer1 pause] : [self.audioPlayer2 pause];
+    if ([self isPlaying:track]) {
+        (track == TrackOne) ? [self.audioPlayer1 pause] : [self.audioPlayer2 pause];
+    }
 }
 
 - (void)resetPlayerForTrack:(TrackNumber)track {
-    [self setAudioPlayerForTrack:track media:(track == TrackOne) ? self.session.firstTrack : self.session.secondTrack];
+    [self stopPlayerForTrack:track];
+    if (track == TrackOne) {
+        self.audioPlayer1.currentTime = 0.0;
+    } else {
+        self.audioPlayer2.currentTime = 0.0;
+    }
+    [self startPlayerForTrack:track];
 }
 
 - (void)fastFwdPlayerForTrack:(TrackNumber)track {
-    if (track == TrackOne) {
-        NSTimeInterval time = self.audioPlayer1.currentTime + skipTime;
-        self.audioPlayer1.currentTime = (time >= self.audioPlayer1.duration) ? self.audioPlayer1.duration : time;
-    } else {
-        NSTimeInterval time = self.audioPlayer2.currentTime + skipTime;
-        self.audioPlayer2.currentTime = (time >= self.audioPlayer2.duration) ? self.audioPlayer2.duration : time;
+    if ([self isPlaying:track]) {
+        if (track == TrackOne) {
+            NSTimeInterval time = self.audioPlayer1.currentTime + skipTime;
+            self.audioPlayer1.currentTime = (time >= self.audioPlayer1.duration) ? self.audioPlayer1.duration : time;
+        } else {
+            NSTimeInterval time = self.audioPlayer2.currentTime + skipTime;
+            self.audioPlayer2.currentTime = (time >= self.audioPlayer2.duration) ? self.audioPlayer2.duration : time;
+        }
     }
 }
 
 - (void)rewindPlayerForTrack:(TrackNumber)track {
-    if (track == TrackOne) {
-        NSTimeInterval time = self.audioPlayer1.currentTime - skipTime;
-        self.audioPlayer1.currentTime = (time <= 0.0) ? 0.0 : time;
-    } else {
-        NSTimeInterval time = self.audioPlayer2.currentTime - skipTime;
-        self.audioPlayer2.currentTime =  (time <= 0.0) ? 0.0 : time;
+    if ([self isPlaying:track]) {
+        if (track == TrackOne) {
+            NSTimeInterval time = self.audioPlayer1.currentTime - skipTime;
+            self.audioPlayer1.currentTime = (time <= 0.0) ? 0.0 : time;
+        } else {
+            NSTimeInterval time = self.audioPlayer2.currentTime - skipTime;
+            self.audioPlayer2.currentTime =  (time <= 0.0) ? 0.0 : time;
+        }
     }
 }
 
@@ -125,7 +141,11 @@ objection_requires(session)
     self.audioPlayer2 = nil;
 }
 
-- (void)switchToTrack:(TrackNumber)track {
+- (BOOL)isPlaying:(TrackNumber)track {
+    return (track == TrackOne) ? self.audioPlayer1.isPlaying : self.audioPlayer2.isPlaying;
+}
+
+- (void)setVolumeToTrack:(TrackNumber)track {
     if (track == TrackOne) {
         if (self.audioPlayer1.isPlaying) {
             self.audioPlayer1.volume = 1.0;
@@ -158,13 +178,11 @@ objection_requires(session)
         case TrackOne:
             self.audioPlayer1 = nil;
             self.audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
-            self.audioPlayer1.volume = 1.0;
             self.audioPlayer1.delegate = self;
             break;
         case TrackTwo:
             self.audioPlayer2 = nil;
             self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
-            self.audioPlayer2.volume = 1.0;
             self.audioPlayer2.delegate = self;
             break;
     }
