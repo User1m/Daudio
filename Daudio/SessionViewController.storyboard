@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0nj-H7-cZe" id="bwH-6h-ZZZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="131.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjB-NJ-Hr9">
@@ -61,9 +61,10 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-Ne-JOn">
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-Ne-JOn">
                                             <rect key="frame" x="84" y="63.5" width="97" height="5"/>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="5" id="CF2-Hq-rdW"/>
                                             </constraints>
@@ -79,9 +80,10 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vO1-UM-dkp">
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vO1-UM-dkp">
                                             <rect key="frame" x="220" y="63.5" width="97" height="5"/>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="5" id="Ak8-kl-ifs"/>
                                             </constraints>
@@ -111,6 +113,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="bar1" destination="Rlx-Ne-JOn" id="kOL-0C-Z4x"/>
+                                    <outlet property="bar2" destination="vO1-UM-dkp" id="QYS-JE-ndQ"/>
                                     <outlet property="firstTrackArtImageView" destination="cHb-Kj-LEb" id="qNd-Yg-BeV"/>
                                     <outlet property="firstTrackLabel" destination="WjB-NJ-Hr9" id="ToD-Wv-85c"/>
                                     <outlet property="secondTrackArtImageView" destination="NfY-Yv-g92" id="GBo-ZV-RfF"/>
