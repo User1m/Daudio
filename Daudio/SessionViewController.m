@@ -6,25 +6,29 @@
 //  Copyright © 2016 Claudius Mbemba. All rights reserved.
 //
 
+@import MediaPlayer;
 #import "SessionViewController.h"
 #import "PlayerViewController.h"
 #import "SessionDataService.h"
 #import "UIViewController+Storyboard.h"
 #import <Objection/Objection.h>
+#import "UIAlertController+Utils.h"
 
 static NSString *dataService = @"dataService";
 
-@interface SessionViewController () <UITableViewDelegate, PlayerViewControllerDelegate>
+@interface SessionViewController () <MPMediaPickerControllerDelegate, UITableViewDelegate, PlayerViewControllerDelegate>
 
 @end
 
 @implementation SessionViewController {
+    MPMediaPickerController *_mediaPicker;
     PlayerViewController *playerVC;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDependencies];
+    [self setupPicker];
     [self setupRefreshControl];
 }
 
@@ -39,6 +43,12 @@ static NSString *dataService = @"dataService";
 }
 
 #pragma mark Setups
+
+- (void)setupPicker {
+    _mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+    _mediaPicker.delegate = self;
+    _mediaPicker.allowsPickingMultipleItems = YES;
+}
 
 - (void)setupDependencies {
     self.dataService = [[SessionDataService alloc]initWithDefaults:NSUserDefaults.standardUserDefaults];
@@ -58,7 +68,7 @@ static NSString *dataService = @"dataService";
 #pragma mark TableView Delegates
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    playerVC.player.session = [self.dataService.savedSessions objectAtIndex:indexPath.row];
+    playerVC.playerVM.session = [self.dataService.savedSessions objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:playerVC animated:YES];
 }
 
@@ -71,11 +81,30 @@ static NSString *dataService = @"dataService";
 #pragma mark Actions
 
 - (IBAction)createNewSession:(id)sender {
-    [self.navigationController pushViewController:playerVC animated:YES];
+    //TODO: user picks 2(limit) songs
+    [self presentViewController:_mediaPicker animated:YES completion:nil];
 }
 
 - (IBAction)saveAllSessions:(id)sender {
     [self.dataService saveData];
+}
+
+#pragma mark MPMediaPickerController Delgates
+
+- (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection {
+    if (mediaItemCollection.items.firstObject) {
+        [playerVC.playerVM setAudioPlayer:PlayerOne media: (MPMediaItem *)mediaItemCollection.items.firstObject];
+    }
+    if (mediaItemCollection.items[1]) {
+        [playerVC.playerVM setAudioPlayer:PlayerTwo media: (MPMediaItem *)mediaItemCollection.items[1]];
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.navigationController pushViewController:playerVC animated:YES];
+    }];
 }
 
 @end

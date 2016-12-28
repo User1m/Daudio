@@ -7,13 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class MPMediaItem;
 
-@interface Session : NSCoder
+typedef NS_ENUM(NSUInteger, TrackNumber) {
+    TrackOne, TrackTwo
+};
 
+@interface Session : NSCoder
 @property (nonatomic, strong) MPMediaItem *firstTrack;
 @property (nonatomic, strong) MPMediaItem *secondTrack;
 @property BOOL isNewSession;
+
+- (UIImage *)getArt:(TrackNumber)track size:(CGSize)size;
 
 @end

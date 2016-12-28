@@ -8,7 +8,7 @@ target 'Daudio' do
   # Pods for Daudio
   pod 'Onboard'
   pod 'Objection', '1.6.1'
-  pod 'SwipeView', '~> 1.3'
+  # pod 'SwipeView', '~> 1.3'
   pod 'ChameleonFramework', '~> 2.1'
 
   target 'DaudioTests' do

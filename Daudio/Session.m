@@ -42,4 +42,10 @@ static NSString *secondTrack = @"secondTrack";
     [coder encodeObject:self.secondTrack forKey:secondTrack];
 }
 
+- (UIImage *)getArt:(TrackNumber)track size:(CGSize)size {
+    return (track == TrackOne) ?
+    [self.firstTrack.artwork imageWithSize:size] :
+    [self.firstTrack.artwork imageWithSize:size] ;
+}
+
 @end

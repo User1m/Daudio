@@ -15,17 +15,10 @@
 - (void)didSetNewSession:(Session *)session;
 @end
 
-typedef NS_ENUM(NSUInteger, SongChoice) {
-    firstChoice,
-    secondChoice,
-    zeroChoice
-};
-
 @interface PlayerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *dragBar;
 @property (nonatomic, weak) id<PlayerViewControllerDelegate> delegate;
-@property (nonatomic, strong) PlayerViewModel *player;
+@property (nonatomic, strong) PlayerViewModel *playerVM;
 
 @end
 

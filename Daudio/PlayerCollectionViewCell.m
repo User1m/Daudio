@@ -1,13 +1,13 @@
 //
-//  PlayerView.h
+//  PlayerCollectionViewCell.m
 //  Daudio
 //
 //  Created by Claudius Mbemba on 12/27/16.
 //  Copyright © 2016 Claudius Mbemba. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PlayerCollectionViewCell.h"
 
-@interface PlayerView : UIView
+@implementation PlayerCollectionViewCell
 
 @end

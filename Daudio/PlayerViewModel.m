@@ -9,10 +9,12 @@
 @import AVFoundation;
 @import MediaPlayer;
 #import "PlayerViewModel.h"
+#import "PlayerCollectionViewCell.h"
 #import "Session.h"
 #import <Objection/Objection.h>
 #import "UIAlertController+Utils.h"
 
+static NSString *cellID = @"collectionCell";
 static NSString *session = @"session";
 static NSString *delegate = @"delegate";
 static NSString *audioPlayer1 = @"audioPlayer1";
@@ -20,11 +22,15 @@ static NSString *audioPlayer2 = @"audioPlayer2";
 const NSUInteger skipTime = 10;
 
 @interface PlayerViewModel() <AVAudioPlayerDelegate>
+
 @property (nonatomic, strong, readwrite) AVAudioPlayer *audioPlayer1;
 @property (nonatomic, strong, readwrite) AVAudioPlayer *audioPlayer2;
+
 @end
 
-@implementation PlayerViewModel
+@implementation PlayerViewModel {
+    TrackNumber _track;
+}
 
 objection_requires(session)
 
@@ -54,7 +60,7 @@ objection_requires(session)
     self.audioPlayer2.volume = 1.0;
 }
 
-#pragma mark Player
+#pragma mark Player Controls
 
 - (void)startPlayer:(AudioPlayers)player {
     (player == PlayerOne) ? [self.audioPlayer1 play] : [self.audioPlayer2 play];
@@ -88,6 +94,11 @@ objection_requires(session)
     return self.session.isNewSession;
 }
 
+- (void)switchTracks {
+    _track = (_track == TrackOne) ? TrackTwo : TrackOne;
+    //TODO:
+}
+
 - (void)startPlayers {
     self.isPlaying = YES;
     [self.audioPlayer1 play];
@@ -96,11 +107,6 @@ objection_requires(session)
     self.audioPlayer2.volume = 0.0;
 }
 
-- (void)stopPlayers {
-    self.isPlaying = NO;
-    [self.audioPlayer1 stop];
-    [self.audioPlayer2 stop];
-}
 
 - (void)clearPlayerSession {
     self.session = nil;
@@ -110,7 +116,7 @@ objection_requires(session)
 }
 
 - (BOOL)playersAreSet {
-    return self.audioPlayer1 != nil && self.audioPlayer2 != nil;
+    return self.audioPlayer1 && self.audioPlayer2;
 }
 
 - (void)setSession:(Session *)session {
@@ -149,5 +155,18 @@ objection_requires(session)
         [self.delegate playersDidFinishPlaying];
     }
 }
+
+#pragma mark UICollectionView Delegate & DataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    PlayerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+    cell.playerImageView.image = [UIImage imageNamed:@"art1"];
+    return cell;
+}
+
 
 @end

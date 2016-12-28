@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "PlayerViewController.h"
-#import "PlayerView.h"
+#import "PlayerViewModel.h"
 
 @interface PlayerVCTests : XCTestCase
 
@@ -32,17 +32,12 @@
     [super tearDown];
 }
 
-- (void)testVCDragBar_ShouldBeConnected {
-    //then
-    XCTAssertNotNil(sut.dragBar);
-}
-
 - (void)testPlayerView_ShouldBeSet {
     //when
-    sut.player = [PlayerView new];
+    sut.playerVM = [PlayerViewModel new];
 
     //then
-    XCTAssertNotNil(sut.player);
+    XCTAssertNotNil(sut.playerVM);
 }
 
 

@@ -10,7 +10,7 @@
 
 @class Session, AVAudioPlayer, MPMediaItem;
 
-@protocol PlayerViewDelegate <NSObject>
+@protocol PlayerViewModelDelegate <NSObject>
 
 - (void)playerDidFinishPlaying:(UIAlertController *)alert;
 - (BOOL)playersDidFinishPlaying;
@@ -21,10 +21,10 @@ typedef NS_ENUM(NSUInteger, AudioPlayers) {
     PlayerOne, PlayerTwo
 };
 
-@interface PlayerViewModel : NSObject
+@interface PlayerViewModel : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) Session *session;
-@property (nonatomic, strong) id<PlayerViewDelegate>delegate;
+@property (nonatomic, strong) id<PlayerViewModelDelegate>delegate;
 @property (nonatomic, strong, readonly) AVAudioPlayer *audioPlayer1;
 @property (nonatomic, strong, readonly) AVAudioPlayer *audioPlayer2;
 
@@ -42,11 +42,7 @@ typedef NS_ENUM(NSUInteger, AudioPlayers) {
 
 - (BOOL)sessionIsNew;
 
-- (void)player1Active;
-- (void)player2Active;
 - (BOOL)playersAreSet;
-- (void)startPlayers;
-- (void)stopPlayers;
 - (void)clearPlayerSession;
 
 @end
