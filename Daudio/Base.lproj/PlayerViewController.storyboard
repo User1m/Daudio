@@ -65,7 +65,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-Mi-EdI">
                                 <rect key="frame" x="0.0" y="554" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="All   " style="plain" id="bNa-P9-O5s">
+                                    <barButtonItem title="Global" style="plain" id="bNa-P9-O5s">
                                         <connections>
                                             <action selector="handleAppTypeSwitch:" destination="BYZ-38-t0r" id="Kl1-pD-j7b"/>
                                         </connections>
@@ -103,10 +103,11 @@
                                 </items>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMJ-bD-bQX">
-                                <rect key="frame" x="16" y="32" width="80" height="30"/>
+                                <rect key="frame" x="16" y="32" width="80" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="eFn-qW-yys"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="doneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gvA-Ai-PWU"/>
@@ -148,6 +149,7 @@
                     <connections>
                         <outlet property="appTypeButton" destination="bNa-P9-O5s" id="Pfa-F8-Gul"/>
                         <outlet property="collectionView" destination="WoQ-hK-LKP" id="Tox-ED-CGs"/>
+                        <outlet property="doneButton" destination="nMJ-bD-bQX" id="6r3-Le-dzR"/>
                         <outlet property="fastFoward" destination="P5S-0a-tEY" id="6Ng-iS-tDZ"/>
                         <outlet property="pauseButton" destination="xVk-SR-nO1" id="1ie-zD-RlH"/>
                         <outlet property="playButton" destination="1Z0-Dy-8Gb" id="PuB-Es-rnC"/>

@@ -17,8 +17,8 @@
 static NSString *choiceOne = @"Choose first song";
 static NSString *choiceTwo = @"Choose second song";
 static NSString *playerVM = @"playerVM";
-static NSString *currentTrack = @"This";
-static NSString *allTracks = @"All  ";
+static NSString *currentTrack = @"Local  ";
+static NSString *allTracks = @"Global";
 
 @interface PlayerViewController () <PlayerViewModelDelegate, UIGestureRecognizerDelegate>
 
@@ -35,6 +35,7 @@ static NSString *allTracks = @"All  ";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *trackTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *trackArtistLabel;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @end
 
@@ -53,18 +54,27 @@ objection_requires(playerVM)
     self.playerVM.delegate = self;
     self.collectionView.dataSource = self.playerVM;
     self.collectionView.delegate = self.playerVM;
-    self.view.backgroundColor = [UIColor colorWithGradientStyle:UIGradientStyleRadial withFrame:self.view.bounds andColors:@[[UIColor flatBlueColor], [UIColor flatGreenColor]]];
+    //    [UIColor colorWithGradientStyle:UIGradientStyleRadial withFrame:self.view.bounds andColors:@[[UIColor flatBlueColor], [UIColor flatGreenColor]]
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self updateView];
+    _currentType = AllTracks;
+    [self updateAppTypeLabel];
+    [self updateViewColors];
+    [self updateViewLabels];
     [self.playerVM startPlayers:_currentTrack];
+    [self.collectionView reloadData];
 }
 
-#pragma mark Setups
+- (void)updateViewColors {
+    self.view.backgroundColor = [UIColor colorWithRandomFlatColorOfShadeStyle:UIShadeStyleLight];
+    self.trackArtistLabel.textColor = [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES];
+    self.trackTitleLabel.textColor = [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES];
+    [self.doneButton setTitleColor:[UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES] forState:UIControlStateNormal];
+}
 
-- (void)updateView {
+- (void)updateViewLabels {
     self.trackTitleLabel.text = [self.playerVM titleForTrack:_currentTrack];
     self.trackArtistLabel.text = [self.playerVM artistForTrack:_currentTrack];
 }
@@ -77,26 +87,27 @@ objection_requires(playerVM)
 
 #pragma mark Actions
 - (IBAction)doneButton:(id)sender {
+    [self.playerVM clearPlayerSession];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)handleAppTypeSwitch:(id)sender {
     _currentType = (_currentType == AllTracks) ? CurrentTrack : AllTracks;
-    self.appTypeButton.title = (_currentType == AllTracks) ? allTracks : currentTrack;
+    [self updateAppTypeLabel];
 }
 
 - (IBAction)handleRewindButton:(id)sender {
     if (_currentType == AllTracks) {
         [self.playerVM rewindPlayers];
     } else {
-        [self.playerVM rewindPlayer:(NSUInteger)_currentTrack];
+        [self.playerVM rewindPlayerForTrack:_currentTrack];
     }
 }
 - (IBAction)handlePauseButton:(id)sender {
     if (_currentType == AllTracks) {
         [self.playerVM pausePlayers];
     } else {
-        [self.playerVM pausePlayer:(NSUInteger)_currentTrack];
+        [self.playerVM pausePlayerForTrack:_currentTrack];
     }
 }
 
@@ -104,7 +115,7 @@ objection_requires(playerVM)
     if (_currentType == AllTracks) {
         [self.playerVM startPlayers:_currentTrack];
     } else {
-        [self.playerVM startPlayer:(NSUInteger)_currentTrack];
+        [self.playerVM startPlayerForTrack:_currentTrack];
     }
 }
 
@@ -112,21 +123,27 @@ objection_requires(playerVM)
     if (_currentType == AllTracks) {
         [self.playerVM fastFwdPlayers];
     } else {
-        [self.playerVM fastFwdPlayer:(NSUInteger)_currentTrack];
+        [self.playerVM fastFwdPlayerForTrack:_currentTrack];
     }
 }
 
 - (IBAction)handleResetButton:(id)sender {
     if (_currentType == AllTracks) {
         [self.playerVM resetPlayers];
+        [self.playerVM startPlayers:_currentTrack];
     } else {
-        [self.playerVM resetPlayer:(NSUInteger)_currentTrack];
+        [self.playerVM resetPlayerForTrack:_currentTrack];
+        [self.playerVM startPlayerForTrack:_currentTrack];
     }
 }
 
-- (void)collectionViewDidSwitch { 
+- (void)updateAppTypeLabel {
+    self.appTypeButton.title = (_currentType == AllTracks) ? allTracks : currentTrack;
+}
+
+- (void)collectionViewDidSwitch {
     _currentTrack = (_currentTrack == TrackOne) ? TrackTwo : TrackOne;
-    [self updateView];
+    [self updateViewLabels];
     [self.playerVM switchToTrack:_currentTrack];
 }
 

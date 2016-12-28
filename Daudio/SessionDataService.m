@@ -27,18 +27,11 @@ static NSString *musicImage = @"music";
 
 objection_requires(userDefaults)
 
-- (instancetype)init {
+- (instancetype)initWithDefaults:(NSUserDefaults *)defaults {
     self = [super init];
     if (self) {
-        [self loadData];
-    }
-    return self;
-}
-
-- (instancetype)initWithDefaults:(NSUserDefaults *)defaults {
-    self = [self init];
-    if (self) {
         self.userDefaults = defaults;
+        [self loadData];
     }
     return self;
 }

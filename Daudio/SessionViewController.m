@@ -45,7 +45,6 @@ static NSString *dataService = @"dataService";
     [self.tableView.refreshControl endRefreshing];
 }
 
-
 #pragma mark Setups
 
 - (void)setupPicker {
@@ -55,7 +54,7 @@ static NSString *dataService = @"dataService";
 }
 
 - (void)setupDependencies {
-    self.dataService = [[SessionDataService alloc]initWithDefaults:NSUserDefaults.standardUserDefaults];
+    self.dataService = [[SessionDataService alloc] initWithDefaults:NSUserDefaults.standardUserDefaults];
     self.tableView.delegate = self;
     self.tableView.dataSource = self.dataService;
     playerVC = [PlayerViewController controllerWithStoryboard];
@@ -81,9 +80,8 @@ static NSString *dataService = @"dataService";
 
 - (IBAction)createNewSession:(id)sender {
     [self setupPicker];
-    //TODO: user picks 2(limit) songs
     [self presentViewController:_mediaPicker animated:YES completion:nil];
-//    [self.navigationController presentViewController:playerVC animated:YES completion:nil];
+    //    [self.navigationController presentViewController:playerVC animated:YES completion:nil];
 }
 
 - (IBAction)saveAllSessions:(id)sender {
@@ -97,21 +95,19 @@ static NSString *dataService = @"dataService";
 }
 
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection {
-    Session * session;
-    if (mediaItemCollection.items.count > 1) {
-        session = [[Session alloc]initWithTrack:mediaItemCollection.items.firstObject track:mediaItemCollection.items[1]];
+    if (mediaItemCollection.items.count > 1 && mediaItemCollection.items.count < 3) {
+        Session *session = [[Session alloc]initWithTrack:mediaItemCollection.items.firstObject track:mediaItemCollection.items[1]];
         playerVC.playerVM.session = session;
-    } else if (mediaItemCollection.items.firstObject) {
-        session = [Session new];
-        playerVC.playerVM.session = session;
-        playerVC.playerVM.session.firstTrack = mediaItemCollection.items.firstObject;
-    }
-    [self.dataService addSession:session];
-    _mediaPicker = nil;
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self.navigationController presentViewController:playerVC animated:YES completion:^{
-            [self.tableView reloadData];
+        [self.dataService addSession:session];
+        _mediaPicker = nil;
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self.navigationController presentViewController:playerVC animated:YES completion:^{
+                [self.tableView reloadData];
+            }];
         }];
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:[UIAlertController alertWithTitle:@"Info" message:@"Please select only 2 songs" actionHandler:nil] animated:YES completion:nil];
     }];
 }
 

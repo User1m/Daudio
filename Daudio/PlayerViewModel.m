@@ -35,13 +35,13 @@ objection_requires(session)
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [JSObjection.defaultInjector injectDependencies:self];
+        [self configureAVAudioSession];
     }
     return self;
 }
 
 - (instancetype)initWithSession:(Session *)session {
-    self = [super init];
+    self = [self init];
     if (self) {
         self.session = session;
     }
@@ -51,99 +51,117 @@ objection_requires(session)
 #pragma mark Player Controls
 
 - (void)startPlayers:(TrackNumber)track {
-    [self startPlayer:PlayerOne];
-    [self startPlayer:PlayerTwo];
+    [self startPlayerForTrack:TrackOne];
+    [self startPlayerForTrack:TrackTwo];
     [self switchToTrack:track];
 }
 
 - (void)stopPlayers {
-    [self stopPlayer:PlayerOne];
-    [self stopPlayer:PlayerTwo];
+    [self stopPlayerForTrack:TrackOne];
+    [self stopPlayerForTrack:TrackTwo];
 }
 
 - (void)pausePlayers {
-    [self pausePlayer:PlayerOne];
-    [self pausePlayer:PlayerTwo];
+    [self pausePlayerForTrack:TrackOne];
+    [self pausePlayerForTrack:TrackTwo];
 }
 
 - (void)resetPlayers {
-    [self resetPlayer:PlayerOne];
-    [self resetPlayer:PlayerTwo];
+    [self resetPlayerForTrack:TrackOne];
+    [self resetPlayerForTrack:TrackTwo];
 }
 
 - (void)rewindPlayers {
-    [self rewindPlayer:PlayerOne];
-    [self rewindPlayer:PlayerTwo];
+    [self rewindPlayerForTrack:TrackOne];
+    [self rewindPlayerForTrack:TrackTwo];
 }
 
 - (void)fastFwdPlayers {
-    [self fastFwdPlayer:PlayerOne];
-    [self fastFwdPlayer:PlayerTwo];
+    [self fastFwdPlayerForTrack:TrackOne];
+    [self fastFwdPlayerForTrack:TrackTwo];
 }
 
-- (void)startPlayer:(AudioPlayers)player {
-    (player == PlayerOne) ? [self.audioPlayer1 play] : [self.audioPlayer2 play];
+- (void)startPlayerForTrack:(TrackNumber)track {
+    (track == TrackOne) ? [self.audioPlayer1 play] : [self.audioPlayer2 play];
 }
 
-- (void)stopPlayer:(AudioPlayers)player {
-    (player == PlayerOne) ? [self.audioPlayer1 stop] : [self.audioPlayer2 stop];
+- (void)stopPlayerForTrack:(TrackNumber)track {
+    (track == TrackOne) ? [self.audioPlayer1 stop] : [self.audioPlayer2 stop];
 }
 
-- (void)pausePlayer:(AudioPlayers)player {
-    (player == PlayerOne) ? [self.audioPlayer1 pause] : [self.audioPlayer2 pause];
+- (void)pausePlayerForTrack:(TrackNumber)track {
+    (track == TrackOne) ? [self.audioPlayer1 pause] : [self.audioPlayer2 pause];
 }
 
-- (void)resetPlayer:(AudioPlayers)player {
-    [self setAudioPlayer:player media:(player == PlayerOne) ? self.session.firstTrack : self.session.secondTrack];
+- (void)resetPlayerForTrack:(TrackNumber)track {
+    [self setAudioPlayerForTrack:track media:(track == TrackOne) ? self.session.firstTrack : self.session.secondTrack];
 }
 
-- (void)fastFwdPlayer:(AudioPlayers)player {
-    (player == PlayerOne) ?
-    [self.audioPlayer1 playAtTime:self.audioPlayer1.currentTime + skipTime] :
-    [self.audioPlayer2 playAtTime:self.audioPlayer1.currentTime + skipTime];
+- (void)fastFwdPlayerForTrack:(TrackNumber)track {
+    if (track == TrackOne) {
+        NSTimeInterval time = self.audioPlayer1.currentTime + skipTime;
+        self.audioPlayer1.currentTime = (time >= self.audioPlayer1.duration) ? self.audioPlayer1.duration : time;
+    } else {
+        NSTimeInterval time = self.audioPlayer2.currentTime + skipTime;
+        self.audioPlayer2.currentTime = (time >= self.audioPlayer2.duration) ? self.audioPlayer2.duration : time;
+    }
 }
 
-- (void)rewindPlayer:(AudioPlayers)player {
-    (player == PlayerOne) ?
-    [self.audioPlayer1 playAtTime:self.audioPlayer1.currentTime - skipTime] :
-    [self.audioPlayer2 playAtTime:self.audioPlayer1.currentTime - skipTime];
+- (void)rewindPlayerForTrack:(TrackNumber)track {
+    if (track == TrackOne) {
+        NSTimeInterval time = self.audioPlayer1.currentTime - skipTime;
+        self.audioPlayer1.currentTime = (time <= 0.0) ? 0.0 : time;
+    } else {
+        NSTimeInterval time = self.audioPlayer2.currentTime - skipTime;
+        self.audioPlayer2.currentTime =  (time <= 0.0) ? 0.0 : time;
+    }
 }
 
-- (BOOL)sessionIsNew {
-    return self.session.isNewSession;
+#pragma mark Helpers
+
+- (void)clearPlayerSession {
+    self.session = nil;
+    self.audioPlayer1 = nil;
+    self.audioPlayer2 = nil;
 }
 
 - (void)switchToTrack:(TrackNumber)track {
     if (track == TrackOne) {
-        self.audioPlayer1.volume = 1.0;
-        self.audioPlayer2.volume = 0.0;
+        if (self.audioPlayer1.isPlaying) {
+            self.audioPlayer1.volume = 1.0;
+            self.audioPlayer2.volume = 0.0;
+        } else if (self.audioPlayer2.isPlaying) {
+            self.audioPlayer1.volume = 0.0;
+            self.audioPlayer2.volume = 1.0;
+        }
     } else {
-        self.audioPlayer2.volume = 1.0;
-        self.audioPlayer1.volume = 0.0;
+        if (self.audioPlayer2.isPlaying) {
+            self.audioPlayer1.volume = 0.0;
+            self.audioPlayer2.volume = 1.0;
+        } else if (self.audioPlayer1.isPlaying) {
+            self.audioPlayer1.volume = 1.0;
+            self.audioPlayer2.volume = 0.0;
+        }
     }
-}
-
-- (BOOL)playersAreSet {
-    return self.audioPlayer1 && self.audioPlayer2;
 }
 
 - (void)setSession:(Session *)session {
     _session = session;
     if (session.firstTrack && session.secondTrack) {
-        [self setAudioPlayer:PlayerOne media:session.firstTrack];
-        [self setAudioPlayer:PlayerTwo media:session.secondTrack];
+        [self setAudioPlayerForTrack:TrackOne media:session.firstTrack];
+        [self setAudioPlayerForTrack:TrackTwo media:session.secondTrack];
     }
 }
 
-- (void)setAudioPlayer:(AudioPlayers)player media:(MPMediaItem *)media {
-    switch (player) {
-        case PlayerOne:
+- (void)setAudioPlayerForTrack:(TrackNumber)track media:(MPMediaItem *)media {
+    switch (track) {
+        case TrackOne:
             self.audioPlayer1 = nil;
             self.audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
             self.audioPlayer1.volume = 1.0;
             self.audioPlayer1.delegate = self;
             break;
-        case PlayerTwo:
+        case TrackTwo:
             self.audioPlayer2 = nil;
             self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[media valueForProperty: MPMediaItemPropertyAssetURL] error:nil];
             self.audioPlayer2.volume = 1.0;
@@ -178,7 +196,7 @@ objection_requires(session)
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlayerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    UIImage *image = (indexPath.row == 0) ? [self.session getArt:TrackOne size:cell.bounds.size] :  [self.session getArt:TrackTwo size:cell.bounds.size];
+    UIImage *image = [self.session getArt:indexPath.row size:cell.bounds.size];
     if (!image) {
         image = [UIImage imageNamed:musicImage];
     }
@@ -190,6 +208,42 @@ objection_requires(session)
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self.delegate collectionViewDidSwitch];
+}
+
+#pragma mark AVSession Setup
+//https://stackoverflow.com/questions/18807157/how-do-i-route-audio-to-speaker-without-using-audiosessionsetproperty/18808124#18808124
+- (void)configureAVAudioSession {
+    // Get your app's audioSession singleton object
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+    // Error handling
+    BOOL success;
+    NSError *error;
+    
+    // set the audioSession category.
+    // Needs to be Record or PlayAndRecord to use audioRouteOverride:
+    
+    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord
+                             error:&error];
+    
+    if (!success) {
+        NSLog(@"\n==========================================\n\n\n Claudius Logging:\n @file: \(%s)\n @func: \(%s)\n @line: \(%d)\n @data: \%@   \n\n\n==========================================\n",__FILE__,__PRETTY_FUNCTION__,__LINE__,[error localizedDescription]);
+    }
+    
+    // Set the audioSession override
+    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
+                                         error:&error];
+    if (!success) {
+        NSLog(@"\n==========================================\n\n\n Claudius Logging:\n @file: \(%s)\n @func: \(%s)\n @line: \(%d)\n @data: \%@   \n\n\n==========================================\n",__FILE__,__PRETTY_FUNCTION__,__LINE__,[error localizedDescription]);
+    }
+    
+    // Activate the audio session
+    success = [session setActive:YES error:&error];
+    if (!success) {
+        NSLog(@"\n==========================================\n\n\n Claudius Logging:\n @file: \(%s)\n @func: \(%s)\n @line: \(%d)\n @data: \%@   \n\n\n==========================================\n",__FILE__,__PRETTY_FUNCTION__,__LINE__,[error localizedDescription]);
+    } else {
+        NSLog(@"AudioSession active");
+    }
 }
 
 @end

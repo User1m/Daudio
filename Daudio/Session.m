@@ -19,16 +19,8 @@ static NSString *secondTrack = @"secondTrack";
 
 @implementation Session
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _isNewSession = YES;
-    }
-    return self;
-}
-
 - (instancetype)initWithTrack:(MPMediaItem *)track1 track:(MPMediaItem *)track2{
-    self = [self init];
+    self = [super init];
     if (self) {
         self.firstTrack = track1;
         self.secondTrack = track2;
@@ -54,7 +46,7 @@ static NSString *secondTrack = @"secondTrack";
 - (UIImage *)getArt:(TrackNumber)track size:(CGSize)size {
     return (track == TrackOne) ?
     [self.firstTrack.artwork imageWithSize:size] :
-    [self.firstTrack.artwork imageWithSize:size] ;
+    [self.secondTrack.artwork imageWithSize:size] ;
 }
 
 @end

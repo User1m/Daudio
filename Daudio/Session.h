@@ -18,7 +18,6 @@ typedef NS_ENUM(NSUInteger, TrackNumber) {
 @interface Session : NSCoder
 @property (nonatomic, strong) MPMediaItem *firstTrack;
 @property (nonatomic, strong) MPMediaItem *secondTrack;
-@property BOOL isNewSession;
 
 - (instancetype)initWithTrack:(MPMediaItem *)track1 track:(MPMediaItem *)track2;
 - (UIImage *)getArt:(TrackNumber)track size:(CGSize)size;
