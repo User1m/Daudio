@@ -48,12 +48,13 @@ objection_requires(session)
     return self;
 }
 
+
 #pragma mark Player Controls
 
 - (void)startPlayers:(TrackNumber)track {
     [self startPlayerForTrack:TrackOne];
     [self startPlayerForTrack:TrackTwo];
-    [self setVolumeToTrack:track];
+    [self setCurrentTrack:track];
 }
 
 - (void)stopPlayers {
@@ -84,7 +85,7 @@ objection_requires(session)
 
 - (void)startPlayerForTrack:(TrackNumber)track {
     (track == TrackOne) ? [self.audioPlayer1 play] : [self.audioPlayer2 play];
-    [self setVolumeToTrack:track];
+    [self setCurrentTrack:track];
 }
 
 - (void)stopPlayerForTrack:(TrackNumber)track {
@@ -135,6 +136,19 @@ objection_requires(session)
 
 #pragma mark Helpers
 
+- (void)setCurrentTrack:(TrackNumber)currentTrack {
+    _currentTrack = currentTrack;
+    [self setVolumeToTrack:_currentTrack];
+}
+
+- (void)updateCurrentTimeForTrack:(TrackNumber)track time:(float)time {
+    if (track == TrackOne) {
+        self.audioPlayer1.currentTime = time;
+    } else {
+        self.audioPlayer2.currentTime = time;
+    }
+}
+
 - (void)clearPlayerSession {
     self.session = nil;
     self.audioPlayer1 = nil;
@@ -167,10 +181,8 @@ objection_requires(session)
 
 - (void)setSession:(Session *)session {
     _session = session;
-    if (session.firstTrack && session.secondTrack) {
-        [self setAudioPlayerForTrack:TrackOne media:session.firstTrack];
-        [self setAudioPlayerForTrack:TrackTwo media:session.secondTrack];
-    }
+    [self setAudioPlayerForTrack:TrackOne media:session.firstTrack];
+    [self setAudioPlayerForTrack:TrackTwo media:session.secondTrack];
 }
 
 - (void)setAudioPlayerForTrack:(TrackNumber)track media:(MPMediaItem *)media {

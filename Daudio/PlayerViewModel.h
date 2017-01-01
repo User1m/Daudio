@@ -24,11 +24,13 @@
 @property (nonatomic, strong) id<PlayerViewModelDelegate>delegate;
 @property (nonatomic, strong, readonly) AVAudioPlayer *audioPlayer1;
 @property (nonatomic, strong, readonly) AVAudioPlayer *audioPlayer2;
+@property (nonatomic) TrackNumber currentTrack;
 
 - (instancetype)initWithSession:(Session *)session;
 - (void)setAudioPlayerForTrack:(TrackNumber)track media:(MPMediaItem *)media;
 - (NSString *)titleForTrack:(TrackNumber)track;
 - (NSString *)artistForTrack:(TrackNumber)track;
+- (void)updateCurrentTimeForTrack:(TrackNumber)track time:(float)time;
 
 //single player
 - (void)startPlayerForTrack:(TrackNumber)track;
@@ -37,7 +39,6 @@
 - (void)resetPlayerForTrack:(TrackNumber)track;
 - (void)rewindPlayerForTrack:(TrackNumber)track;
 - (void)fastFwdPlayerForTrack:(TrackNumber)track;
-- (void)setVolumeToTrack:(TrackNumber)track;
 
 //all players
 - (void)startPlayers:(TrackNumber)track;

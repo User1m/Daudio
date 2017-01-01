@@ -13,6 +13,7 @@
 #import "NSString+Utils.h"
 #import <Objection/Objection.h>
 #import <ChameleonFramework/Chameleon.h>
+#import "UIAlertController+Utils.h"
 
 static NSString *choiceOne = @"Choose first song";
 static NSString *choiceTwo = @"Choose second song";
@@ -36,6 +37,9 @@ static NSString *allTracks = @"Global";
 @property (weak, nonatomic) IBOutlet UILabel *trackTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *trackArtistLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UILabel *trackTimeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *noteButton;
+@property (weak, nonatomic) IBOutlet UISlider *trackTimeSlider;
 
 @end
 
@@ -43,6 +47,7 @@ static NSString *allTracks = @"Global";
 @implementation PlayerViewController {
     AppType _currentType;
     TrackNumber _currentTrack;
+    NSTimer *_timer;
 }
 
 objection_requires(playerVM)
@@ -60,6 +65,7 @@ objection_requires(playerVM)
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _currentType = AllTracks;
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateSliderView) userInfo:nil repeats:YES];
     [self updateAppTypeLabel];
     [self updateViewColors];
     [self updateViewLabels];
@@ -71,12 +77,21 @@ objection_requires(playerVM)
     self.view.backgroundColor = [UIColor colorWithRandomFlatColorOfShadeStyle:UIShadeStyleLight];
     self.trackArtistLabel.textColor = [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES];
     self.trackTitleLabel.textColor = [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES];
-    [self.doneButton setTitleColor:[UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES] forState:UIControlStateNormal];
+    self.trackTimeLabel.textColor = [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES];
+    [self.doneButton setTitleColor: [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES] forState:UIControlStateNormal];
+    self.trackTimeSlider.tintColor = [UIColor colorWithRandomFlatColorExcludingColorsInArray:@[self.view.backgroundColor]];
 }
 
 - (void)updateViewLabels {
     self.trackTitleLabel.text = [self.playerVM titleForTrack:_currentTrack];
     self.trackArtistLabel.text = [self.playerVM artistForTrack:_currentTrack];
+}
+
+- (void)updateSliderView {
+    self.trackTimeSlider.maximumValue = (float)(_currentTrack == TrackOne) ? self.playerVM.audioPlayer1.duration : self.playerVM.audioPlayer2.duration;
+    NSTimeInterval currTime = (_currentTrack == TrackOne) ? self.playerVM.audioPlayer1.currentTime : self.playerVM.audioPlayer2.currentTime;
+    self.trackTimeSlider.value = (float)currTime;
+    self.trackTimeLabel.text = [self formatTimeToString:currTime];
 }
 
 #pragma mark PlayerViewModel Delegates
@@ -85,9 +100,14 @@ objection_requires(playerVM)
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)currentTrackDidUpdateCurrentTime{
+    [self updateSliderView];
+}
+
 #pragma mark Actions
 - (IBAction)doneButton:(id)sender {
     [self.playerVM clearPlayerSession];
+    [_timer invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -103,6 +123,7 @@ objection_requires(playerVM)
         [self.playerVM rewindPlayerForTrack:_currentTrack];
     }
 }
+
 - (IBAction)handlePauseButton:(id)sender {
     if (_currentType == AllTracks) {
         [self.playerVM pausePlayers];
@@ -135,8 +156,26 @@ objection_requires(playerVM)
     }
 }
 
+- (IBAction)handleSliderMoved:(id)sender {
+    [self.playerVM updateCurrentTimeForTrack:_currentTrack time:self.trackTimeSlider.value];
+    [self updateSliderView];
+}
+
+- (IBAction)handleNoteButton:(id)sender {
+    [self presentViewController:[UIAlertController alertWithTitle:@"404" message:@"Feature in progess" actionHandler:nil] animated:YES completion:nil];
+}
+
+#pragma mark Helpers
+
 - (void)updateAppTypeLabel {
     self.appTypeButton.title = (_currentType == AllTracks) ? allTracks : currentTrack;
+}
+
+- (NSString *)formatTimeToString:(NSTimeInterval)time {
+    NSInteger ti = (NSInteger)time;
+    NSInteger seconds = ti % 60;
+    NSInteger minutes = (ti / 60) % 60;
+    return [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
 }
 
 - (void)collectionViewDidSwitch {
@@ -144,8 +183,8 @@ objection_requires(playerVM)
     CGFloat pageWidth = self.collectionView.frame.size.width;
     CGFloat idx = ceilf(self.collectionView.contentOffset.x / pageWidth);
     _currentTrack = (NSUInteger)idx;
+    self.playerVM.currentTrack = _currentTrack;
     [self updateViewLabels];
-    [self.playerVM setVolumeToTrack:_currentTrack];
 }
 
 @end
