@@ -30,7 +30,10 @@
 - (void)setAudioPlayerForTrack:(TrackNumber)track media:(MPMediaItem *)media;
 - (NSString *)titleForTrack:(TrackNumber)track;
 - (NSString *)artistForTrack:(TrackNumber)track;
+- (NSTimeInterval)currentTimeForTrack:(TrackNumber)track;
+- (NSTimeInterval)durationForTrack:(TrackNumber)track;
 - (void)updateCurrentTimeForTrack:(TrackNumber)track time:(float)time;
+- (NSString *)noteKeyForTrack:(TrackNumber)track;
 
 //single player
 - (void)startPlayerForTrack:(TrackNumber)track;

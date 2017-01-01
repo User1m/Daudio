@@ -10,6 +10,10 @@
 		AFA1C9D293B684D9226832DD /* Pods_DaudioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D822A0D67092E8D648332525 /* Pods_DaudioTests.framework */; };
 		DC5A68141E14349D00D15857 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5A68131E14349D00D15857 /* Player.storyboard */; };
 		DC5A68181E1434C100D15857 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A68171E1434C100D15857 /* PlayViewController.m */; };
+		DC5A682F1E1909A100D15857 /* NoteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5A682E1E1909A100D15857 /* NoteViewController.storyboard */; };
+		DC5A68331E190A3600D15857 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A68321E190A3600D15857 /* NoteViewController.m */; };
+		DC5A68361E19131100D15857 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A68351E19131100D15857 /* Note.m */; };
+		DC5A68391E1913A200D15857 /* NoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A68381E1913A200D15857 /* NoteManager.m */; };
 		DC71BBE71E0E101800190871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BBE61E0E101800190871 /* main.m */; };
 		DC71BBEA1E0E101800190871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BBE91E0E101800190871 /* AppDelegate.m */; };
 		DC71BBED1E0E101800190871 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BBEC1E0E101800190871 /* PlayerViewController.m */; };
@@ -58,6 +62,13 @@
 		DC5A68131E14349D00D15857 /* Player.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		DC5A68161E1434C100D15857 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		DC5A68171E1434C100D15857 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		DC5A682E1E1909A100D15857 /* NoteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NoteViewController.storyboard; sourceTree = "<group>"; };
+		DC5A68311E190A3600D15857 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
+		DC5A68321E190A3600D15857 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
+		DC5A68341E19131100D15857 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		DC5A68351E19131100D15857 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		DC5A68371E1913A200D15857 /* NoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteManager.h; sourceTree = "<group>"; };
+		DC5A68381E1913A200D15857 /* NoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteManager.m; sourceTree = "<group>"; };
 		DC71BBE21E0E101800190871 /* Daudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC71BBE61E0E101800190871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DC71BBE81E0E101800190871 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -146,6 +157,15 @@
 			name = Playground;
 			sourceTree = "<group>";
 		};
+		DC5A68301E190A1900D15857 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				DC5A68311E190A3600D15857 /* NoteViewController.h */,
+				DC5A68321E190A3600D15857 /* NoteViewController.m */,
+			);
+			name = Note;
+			sourceTree = "<group>";
+		};
 		DC71BBD91E0E101800190871 = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +231,10 @@
 				DC71BC161E0EF49700190871 /* Session.m */,
 				DCDE02021E119AED005B7D8A /* SessionManager.h */,
 				DCDE02031E119AED005B7D8A /* SessionManager.m */,
+				DC5A68341E19131100D15857 /* Note.h */,
+				DC5A68351E19131100D15857 /* Note.m */,
+				DC5A68371E1913A200D15857 /* NoteManager.h */,
+				DC5A68381E1913A200D15857 /* NoteManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -218,6 +242,7 @@
 		DC71BC121E0EF42500190871 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DC5A68301E190A1900D15857 /* Note */,
 				DCCB73BB1E135E96002DE86A /* Session */,
 				DCCB73BA1E135E86002DE86A /* Player */,
 			);
@@ -230,6 +255,7 @@
 				DCCB73BC1E135EA9002DE86A /* Cells */,
 				DC71BBEE1E0E101800190871 /* PlayerViewController.storyboard */,
 				DC71BC1B1E0EF51100190871 /* SessionViewController.storyboard */,
+				DC5A682E1E1909A100D15857 /* NoteViewController.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -422,6 +448,7 @@
 				DC71BC1C1E0EF51100190871 /* SessionViewController.storyboard in Resources */,
 				DC71BBF51E0E101800190871 /* LaunchScreen.storyboard in Resources */,
 				DC5A68141E14349D00D15857 /* Player.storyboard in Resources */,
+				DC5A682F1E1909A100D15857 /* NoteViewController.storyboard in Resources */,
 				DC71BBF21E0E101800190871 /* Assets.xcassets in Resources */,
 				DC71BBF01E0E101800190871 /* PlayerViewController.storyboard in Resources */,
 			);
@@ -535,6 +562,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC71BC321E0F236100190871 /* PlayerViewModel.m in Sources */,
+				DC5A68391E1913A200D15857 /* NoteManager.m in Sources */,
+				DC5A68361E19131100D15857 /* Note.m in Sources */,
 				DCDE02071E119B19005B7D8A /* SessionDataService.m in Sources */,
 				DC71BC291E0EF9D100190871 /* SessionTableViewCell.m in Sources */,
 				DC71BC2C1E0F09D700190871 /* UIAlertController+Utils.m in Sources */,
@@ -542,6 +571,7 @@
 				DC71BC171E0EF49700190871 /* Session.m in Sources */,
 				DC71BBEA1E0E101800190871 /* AppDelegate.m in Sources */,
 				DCDE02041E119AED005B7D8A /* SessionManager.m in Sources */,
+				DC5A68331E190A3600D15857 /* NoteViewController.m in Sources */,
 				DC71BC261E0EF6B200190871 /* UIViewController+Storyboard.m in Sources */,
 				DC71BBE71E0E101800190871 /* main.m in Sources */,
 				DC99BDCB1E1349F300E46F14 /* PlayerCollectionViewCell.m in Sources */,

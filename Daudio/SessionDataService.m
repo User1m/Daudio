@@ -11,6 +11,7 @@
 #import "SessionTableViewCell.h"
 #import "PlayerViewController.h"
 #import "Session.h"
+#import "NoteManager.h"
 #import <Objection/Objection.h>
 @import MediaPlayer;
 

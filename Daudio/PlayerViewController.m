@@ -14,6 +14,8 @@
 #import <Objection/Objection.h>
 #import <ChameleonFramework/Chameleon.h>
 #import "UIAlertController+Utils.h"
+#import "NoteViewController.h"
+#import "UIViewController+Storyboard.h"
 
 static NSString *choiceOne = @"Choose first song";
 static NSString *choiceTwo = @"Choose second song";
@@ -21,7 +23,7 @@ static NSString *playerVM = @"playerVM";
 static NSString *currentTrack = @"Local  ";
 static NSString *allTracks = @"Global";
 
-@interface PlayerViewController () <PlayerViewModelDelegate, UIGestureRecognizerDelegate>
+@interface PlayerViewController () <PlayerViewModelDelegate, UIGestureRecognizerDelegate, NoteViewControllerDelegate>
 
 //controls
 @property (strong, nonatomic) IBOutlet UIToolbar *playerControlBar;
@@ -48,6 +50,7 @@ static NSString *allTracks = @"Global";
     AppType _currentType;
     TrackNumber _currentTrack;
     NSTimer *_timer;
+    NoteViewController *_noteVC;
 }
 
 objection_requires(playerVM)
@@ -69,7 +72,6 @@ objection_requires(playerVM)
     [self updateAppTypeLabel];
     [self updateViewColors];
     [self updateViewLabels];
-    [self.playerVM startPlayers:_currentTrack];
     [self.collectionView reloadData];
 }
 
@@ -88,10 +90,9 @@ objection_requires(playerVM)
 }
 
 - (void)updateSliderView {
-    self.trackTimeSlider.maximumValue = (float)(_currentTrack == TrackOne) ? self.playerVM.audioPlayer1.duration : self.playerVM.audioPlayer2.duration;
-    NSTimeInterval currTime = (_currentTrack == TrackOne) ? self.playerVM.audioPlayer1.currentTime : self.playerVM.audioPlayer2.currentTime;
-    self.trackTimeSlider.value = (float)currTime;
-    self.trackTimeLabel.text = [self formatTimeToString:currTime];
+    self.trackTimeSlider.maximumValue = (float)[self.playerVM durationForTrack:_currentTrack];
+    self.trackTimeSlider.value = (float)[self.playerVM currentTimeForTrack:_currentTrack];
+    self.trackTimeLabel.text = [self formatTimeToString:[self.playerVM currentTimeForTrack:_currentTrack]];
 }
 
 #pragma mark PlayerViewModel Delegates
@@ -100,13 +101,21 @@ objection_requires(playerVM)
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)currentTrackDidUpdateCurrentTime{
-    [self updateSliderView];
+#pragma mark NoteVC Delegates
+
+- (void)didRequestAnnotationUpdate {
+    _noteVC.noteAnnotation = [self noteAnnotationFormat];
+}
+
+- (void)didFinishNote {
+    _noteVC = nil;
 }
 
 #pragma mark Actions
+
 - (IBAction)doneButton:(id)sender {
     [self.playerVM clearPlayerSession];
+    [self resetView];
     [_timer invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -162,10 +171,19 @@ objection_requires(playerVM)
 }
 
 - (IBAction)handleNoteButton:(id)sender {
-    [self presentViewController:[UIAlertController alertWithTitle:@"404" message:@"Feature in progess" actionHandler:nil] animated:YES completion:nil];
+    _noteVC = [NoteViewController controllerWithStoryboard];
+    _noteVC.delegate = self;
+    _noteVC.noteKey = [self.playerVM noteKeyForTrack:_currentTrack];
+    _noteVC.noteAnnotation = [self noteAnnotationFormat];
+    [self presentViewController:_noteVC animated:YES completion:nil];
 }
 
 #pragma mark Helpers
+
+- (void)resetView {
+    self.trackTimeSlider.value = 0.0;
+    self.trackTimeLabel.text = @"00:00";
+}
 
 - (void)updateAppTypeLabel {
     self.appTypeButton.title = (_currentType == AllTracks) ? allTracks : currentTrack;
@@ -176,6 +194,10 @@ objection_requires(playerVM)
     NSInteger seconds = ti % 60;
     NSInteger minutes = (ti / 60) % 60;
     return [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
+}
+
+- (NSString *)noteAnnotationFormat {
+    return [NSString stringWithFormat:@"---------- %@ vs %@ ----------\n", [self formatTimeToString:[self.playerVM currentTimeForTrack:_currentTrack]],[self.playerVM titleForTrack:(_currentTrack == TrackOne) ? TrackTwo : TrackOne]];
 }
 
 - (void)collectionViewDidSwitch {

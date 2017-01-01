@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VOC-NA-y7p">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Note View Controller-->
+        <scene sceneID="r1s-xA-f3g">
+            <objects>
+                <viewController storyboardIdentifier="NotesViewController" id="VOC-NA-y7p" customClass="NoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bGV-bM-537"/>
+                        <viewControllerLayoutGuide type="bottom" id="sQ8-dH-BFX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nhq-Df-z7X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ely-Ti-7cW">
+                                <rect key="frame" x="16" y="49" width="343" height="589"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">03:00 vs Zaddy (CDQ): Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ely-Ti-7cW" firstAttribute="leading" secondItem="nhq-Df-z7X" secondAttribute="leadingMargin" id="XfC-y5-sEa"/>
+                            <constraint firstItem="sQ8-dH-BFX" firstAttribute="top" secondItem="Ely-Ti-7cW" secondAttribute="bottom" constant="29" id="bvf-L1-wcU"/>
+                            <constraint firstItem="Ely-Ti-7cW" firstAttribute="trailing" secondItem="nhq-Df-z7X" secondAttribute="trailingMargin" id="fm7-hd-lfw"/>
+                            <constraint firstItem="Ely-Ti-7cW" firstAttribute="top" secondItem="bGV-bM-537" secondAttribute="bottom" constant="29" id="uTl-2C-eQG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="annotateButton" destination="lWa-cl-oxs" id="R6s-wF-HjE"/>
+                        <outlet property="clearButton" destination="AUB-Pz-zjR" id="eOB-L4-OVj"/>
+                        <outlet property="doneButton" destination="fdL-z6-goc" id="xRs-Hf-2Vo"/>
+                        <outlet property="noteTextView" destination="Ely-Ti-7cW" id="ct1-mM-JIu"/>
+                        <outlet property="toolBar" destination="qFH-lF-2ht" id="P0s-NR-oYJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JZq-0h-ehK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="qFH-lF-2ht">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <items>
+                        <barButtonItem title="Clear" id="AUB-Pz-zjR">
+                            <connections>
+                                <action selector="handleClearButton:" destination="VOC-NA-y7p" id="qe5-4i-jx9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cGU-xI-qVp"/>
+                        <barButtonItem title="Annotate" id="lWa-cl-oxs">
+                            <connections>
+                                <action selector="handleAnnotateButton:" destination="VOC-NA-y7p" id="0EF-Kp-Lbr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="D8E-Qm-Bjz"/>
+                        <barButtonItem systemItem="done" id="fdL-z6-goc">
+                            <connections>
+                                <action selector="handleDoneButton:" destination="VOC-NA-y7p" id="Ab9-5U-VRt"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </objects>
+            <point key="canvasLocation" x="-207.19999999999999" y="54.422788605697157"/>
+        </scene>
+    </scenes>
+</document>

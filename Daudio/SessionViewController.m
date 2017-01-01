@@ -20,7 +20,6 @@ static NSString *dataService = @"dataService";
 @class PlayerViewModel;
 
 @interface SessionViewController () <MPMediaPickerControllerDelegate, UITableViewDelegate, PlayerViewControllerDelegate>
-
 @end
 
 @implementation SessionViewController {

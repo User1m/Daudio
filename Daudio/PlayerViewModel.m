@@ -136,9 +136,22 @@ objection_requires(session)
 
 #pragma mark Helpers
 
+- (NSString *)noteKeyForTrack:(TrackNumber)track {
+    //TODO: Find stronger key
+    return (track == TrackOne) ? self.session.firstTrack.title : self.session.secondTrack.title;
+}
+
 - (void)setCurrentTrack:(TrackNumber)currentTrack {
     _currentTrack = currentTrack;
     [self setVolumeToTrack:_currentTrack];
+}
+
+- (NSTimeInterval)currentTimeForTrack:(TrackNumber)track {
+    return (track == TrackOne) ? self.audioPlayer1.currentTime : self.audioPlayer2.currentTime;
+}
+
+- (NSTimeInterval)durationForTrack:(TrackNumber)track {
+    return (track == TrackOne) ? self.audioPlayer1.duration : self.audioPlayer2.duration;
 }
 
 - (void)updateCurrentTimeForTrack:(TrackNumber)track time:(float)time {
