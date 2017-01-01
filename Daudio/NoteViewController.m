@@ -36,13 +36,13 @@ objection_requires(note)
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self addObservers];
+//    [self addObservers];
     [self annotateNote];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self removeObservers];
+//    [self removeObservers];
 }
 
 #pragma mark Setup

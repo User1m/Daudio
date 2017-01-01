@@ -197,7 +197,7 @@ objection_requires(playerVM)
 }
 
 - (NSString *)noteAnnotationFormat {
-    return [NSString stringWithFormat:@"---------- %@ vs %@ ----------\n", [self formatTimeToString:[self.playerVM currentTimeForTrack:_currentTrack]],[self.playerVM titleForTrack:(_currentTrack == TrackOne) ? TrackTwo : TrackOne]];
+    return [NSString stringWithFormat:@"---------- %@ vs \"%@\" ----------\n", [self formatTimeToString:[self.playerVM currentTimeForTrack:_currentTrack]],[self.playerVM titleForTrack:(_currentTrack == TrackOne) ? TrackTwo : TrackOne]];
 }
 
 - (void)collectionViewDidSwitch {
