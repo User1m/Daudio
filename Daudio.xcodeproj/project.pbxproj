@@ -14,6 +14,7 @@
 		DC5A68331E190A3600D15857 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A68321E190A3600D15857 /* NoteViewController.m */; };
 		DC5A68361E19131100D15857 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A68351E19131100D15857 /* Note.m */; };
 		DC5A68391E1913A200D15857 /* NoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A68381E1913A200D15857 /* NoteManager.m */; };
+		DC5A683D1E1A510B00D15857 /* NoteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5A683C1E1A510B00D15857 /* NoteButton.m */; };
 		DC71BBE71E0E101800190871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BBE61E0E101800190871 /* main.m */; };
 		DC71BBEA1E0E101800190871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BBE91E0E101800190871 /* AppDelegate.m */; };
 		DC71BBED1E0E101800190871 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC71BBEC1E0E101800190871 /* PlayerViewController.m */; };
@@ -69,6 +70,8 @@
 		DC5A68351E19131100D15857 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		DC5A68371E1913A200D15857 /* NoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteManager.h; sourceTree = "<group>"; };
 		DC5A68381E1913A200D15857 /* NoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteManager.m; sourceTree = "<group>"; };
+		DC5A683B1E1A510B00D15857 /* NoteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteButton.h; sourceTree = "<group>"; };
+		DC5A683C1E1A510B00D15857 /* NoteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteButton.m; sourceTree = "<group>"; };
 		DC71BBE21E0E101800190871 /* Daudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC71BBE61E0E101800190871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DC71BBE81E0E101800190871 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 				DC71BBEE1E0E101800190871 /* PlayerViewController.storyboard */,
 				DC71BC1B1E0EF51100190871 /* SessionViewController.storyboard */,
 				DC5A682E1E1909A100D15857 /* NoteViewController.storyboard */,
+				DC5A683B1E1A510B00D15857 /* NoteButton.h */,
+				DC5A683C1E1A510B00D15857 /* NoteButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -574,6 +579,7 @@
 				DC5A68331E190A3600D15857 /* NoteViewController.m in Sources */,
 				DC71BC261E0EF6B200190871 /* UIViewController+Storyboard.m in Sources */,
 				DC71BBE71E0E101800190871 /* main.m in Sources */,
+				DC5A683D1E1A510B00D15857 /* NoteButton.m in Sources */,
 				DC99BDCB1E1349F300E46F14 /* PlayerCollectionViewCell.m in Sources */,
 				DC71BC2F1E0F1E0E00190871 /* NSString+Utils.m in Sources */,
 				DC71BC101E0E48BF00190871 /* UIColor+Utils.m in Sources */,

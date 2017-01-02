@@ -16,6 +16,7 @@
 #import "UIAlertController+Utils.h"
 #import "NoteViewController.h"
 #import "UIViewController+Storyboard.h"
+#import "NoteButton.h"
 
 static NSString *choiceOne = @"Choose first song";
 static NSString *choiceTwo = @"Choose second song";
@@ -40,7 +41,7 @@ static NSString *allTracks = @"Global";
 @property (weak, nonatomic) IBOutlet UILabel *trackArtistLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UILabel *trackTimeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *noteButton;
+@property (weak, nonatomic) IBOutlet NoteButton *noteButton;
 @property (weak, nonatomic) IBOutlet UISlider *trackTimeSlider;
 
 @end
@@ -82,6 +83,8 @@ objection_requires(playerVM)
     self.trackTimeLabel.textColor = [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES];
     [self.doneButton setTitleColor: [UIColor colorWithContrastingBlackOrWhiteColorOn: self.view.backgroundColor isFlat:YES] forState:UIControlStateNormal];
     self.trackTimeSlider.tintColor = [UIColor colorWithRandomFlatColorExcludingColorsInArray:@[self.view.backgroundColor]];
+    self.noteButton.strokeColor =  self.trackTimeSlider.tintColor;
+    self.noteButton.backgroundColor = [UIColor colorWithRandomFlatColorExcludingColorsInArray:@[self.view.backgroundColor]];
 }
 
 - (void)updateViewLabels {

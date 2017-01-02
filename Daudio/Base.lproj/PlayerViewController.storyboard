@@ -88,12 +88,15 @@
                                     <action selector="handleSliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="Yw3-cS-2iN"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaN-Z8-ceF">
-                                <rect key="frame" x="311" y="519" width="48" height="48"/>
-                                <state key="normal" image="noteIcon"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaN-Z8-ceF" customClass="NoteButton">
+                                <rect key="frame" x="311" y="525" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="7hA-uz-mh2"/>
+                                    <constraint firstAttribute="width" constant="48" id="GkK-13-UAU"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -149,11 +152,11 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WoQ-hK-LKP" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9lO-3n-0JI"/>
+                            <constraint firstItem="VaN-Z8-ceF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Bxc-af-Oh5"/>
                             <constraint firstItem="btz-tM-eS0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EbK-OC-1gg"/>
                             <constraint firstAttribute="trailing" secondItem="FWx-Mi-EdI" secondAttribute="trailing" id="FAF-eO-YcJ"/>
-                            <constraint firstItem="VaN-Z8-ceF" firstAttribute="leading" secondItem="0jK-hj-MLd" secondAttribute="trailing" constant="8" id="HPH-Oc-otb"/>
+                            <constraint firstItem="FWx-Mi-EdI" firstAttribute="top" secondItem="VaN-Z8-ceF" secondAttribute="bottom" constant="13" id="GOR-ij-R78"/>
                             <constraint firstItem="WoQ-hK-LKP" firstAttribute="top" secondItem="btz-tM-eS0" secondAttribute="bottom" constant="25" id="N61-jW-jT3"/>
-                            <constraint firstItem="VaN-Z8-ceF" firstAttribute="top" secondItem="WoQ-hK-LKP" secondAttribute="bottom" constant="8" id="QJH-5W-FFN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WoQ-hK-LKP" secondAttribute="bottom" constant="156" id="R1N-hI-6iG"/>
                             <constraint firstItem="RKs-oO-Do4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="TCW-z3-hsn"/>
                             <constraint firstItem="RKs-oO-Do4" firstAttribute="top" secondItem="0jK-hj-MLd" secondAttribute="bottom" constant="1" id="VKt-4k-w0x"/>
@@ -164,10 +167,10 @@
                             <constraint firstItem="nMJ-bD-bQX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="dRV-fb-Bzv"/>
                             <constraint firstItem="0jK-hj-MLd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iaD-Kf-Rwk"/>
                             <constraint firstItem="nMJ-bD-bQX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pHt-QE-0cx"/>
-                            <constraint firstItem="VaN-Z8-ceF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="q6o-CE-QtB"/>
                             <constraint firstItem="WoQ-hK-LKP" firstAttribute="top" secondItem="dcs-lE-gfR" secondAttribute="bottom" constant="80" id="t6w-uT-Ia0"/>
                             <constraint firstItem="btz-tM-eS0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="tV4-ps-nId"/>
                             <constraint firstItem="FWx-Mi-EdI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="teV-ya-PmZ"/>
+                            <constraint firstItem="VaN-Z8-ceF" firstAttribute="leading" secondItem="0jK-hj-MLd" secondAttribute="trailing" constant="8" id="uXj-3p-sb1"/>
                             <constraint firstItem="dcs-lE-gfR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="v1X-7p-xpZ"/>
                             <constraint firstItem="FWx-Mi-EdI" firstAttribute="top" secondItem="RKs-oO-Do4" secondAttribute="bottom" constant="9" id="zeE-GY-RIx"/>
                         </constraints>
@@ -200,6 +203,5 @@
     </scenes>
     <resources>
         <image name="art2" width="1500" height="1500"/>
-        <image name="noteIcon" width="48" height="48"/>
     </resources>
 </document>
