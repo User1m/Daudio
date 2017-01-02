@@ -21,6 +21,7 @@ static NSString *note =  @"note";
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *clearButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *annotateButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 
 @end
 
@@ -36,13 +37,13 @@ objection_requires(note)
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [self addObservers];
+    [self addObservers];
     [self annotateNote];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    [self removeObservers];
+    [self removeObservers];
 }
 
 #pragma mark Setup
@@ -72,7 +73,6 @@ objection_requires(note)
         [JSObjection.defaultInjector injectDependencies:self];
     }
     self.noteTextView.text = self.note.formattedText;
-    //    self.noteTextView.text = (self.note.formattedText) ? self.note.formattedText : @"";
 }
 
 - (void)saveNote {
@@ -81,21 +81,15 @@ objection_requires(note)
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
-    //https://stackoverflow.com/questions/11282449/move-uiview-up-when-the-keyboard-appears-in-ios
+    //https://stackoverflow.com/questions/3825822/how-do-i-get-uitextview-to-scroll-properly-when-the-keyboard-is-visible
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    [UIView animateWithDuration:keyboardDuration animations:^{
-        CGRect f = self.view.frame;
-        f.origin.y = -keyboardSize.height;
-        self.view.frame = f;
-    }];
+    self.noteTextView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+    self.noteTextView.scrollIndicatorInsets = self.noteTextView.contentInset;
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    [UIView animateWithDuration:keyboardDuration animations:^{
-        CGRect f = self.view.frame;
-        f.origin.y = 0.0f;
-        self.view.frame = f;
-    }];
+    self.noteTextView.contentInset = UIEdgeInsetsZero;
+    self.noteTextView.scrollIndicatorInsets = UIEdgeInsetsZero;
 }
 
 #pragma mark Actions
@@ -104,6 +98,11 @@ objection_requires(note)
     [self saveNote];
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.delegate didFinishNote];
+}
+
+- (IBAction)handleCancelButton:(id)sender {
+    [self.view endEditing:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)handleClearButton:(id)sender {

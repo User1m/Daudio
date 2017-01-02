@@ -24,7 +24,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ely-Ti-7cW">
                                 <rect key="frame" x="16" y="49" width="343" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">03:00 vs Zaddy (CDQ): Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -39,6 +38,7 @@
                     </view>
                     <connections>
                         <outlet property="annotateButton" destination="lWa-cl-oxs" id="R6s-wF-HjE"/>
+                        <outlet property="cancelButton" destination="zuK-M5-GKG" id="inp-3m-4M7"/>
                         <outlet property="clearButton" destination="AUB-Pz-zjR" id="eOB-L4-OVj"/>
                         <outlet property="doneButton" destination="fdL-z6-goc" id="xRs-Hf-2Vo"/>
                         <outlet property="noteTextView" destination="Ely-Ti-7cW" id="ct1-mM-JIu"/>
@@ -51,6 +51,12 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <items>
+                        <barButtonItem systemItem="cancel" id="zuK-M5-GKG">
+                            <connections>
+                                <action selector="handleCancelButton:" destination="VOC-NA-y7p" id="h6Y-2J-f1V"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="D8E-Qm-Bjz"/>
                         <barButtonItem title="Clear" id="AUB-Pz-zjR">
                             <connections>
                                 <action selector="handleClearButton:" destination="VOC-NA-y7p" id="qe5-4i-jx9"/>
@@ -62,7 +68,7 @@
                                 <action selector="handleAnnotateButton:" destination="VOC-NA-y7p" id="0EF-Kp-Lbr"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="D8E-Qm-Bjz"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="2xT-vk-qS6"/>
                         <barButtonItem systemItem="done" id="fdL-z6-goc">
                             <connections>
                                 <action selector="handleDoneButton:" destination="VOC-NA-y7p" id="Ab9-5U-VRt"/>
