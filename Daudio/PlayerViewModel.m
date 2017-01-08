@@ -112,11 +112,12 @@ objection_requires(session)
 
 - (void)fastFwdPlayerForTrack:(TrackNumber)track {
     if ([self isPlaying:track]) {
+        NSTimeInterval time;
         if (track == TrackOne) {
-            NSTimeInterval time = self.audioPlayer1.currentTime + skipTime;
+            time = self.audioPlayer1.currentTime + skipTime;
             self.audioPlayer1.currentTime = (time >= self.audioPlayer1.duration) ? self.audioPlayer1.duration : time;
         } else {
-            NSTimeInterval time = self.audioPlayer2.currentTime + skipTime;
+            time = self.audioPlayer2.currentTime + skipTime;
             self.audioPlayer2.currentTime = (time >= self.audioPlayer2.duration) ? self.audioPlayer2.duration : time;
         }
     }
@@ -124,11 +125,12 @@ objection_requires(session)
 
 - (void)rewindPlayerForTrack:(TrackNumber)track {
     if ([self isPlaying:track]) {
+        NSTimeInterval time;
         if (track == TrackOne) {
-            NSTimeInterval time = self.audioPlayer1.currentTime - skipTime;
+            time = self.audioPlayer1.currentTime - skipTime;
             self.audioPlayer1.currentTime = (time <= 0.0) ? 0.0 : time;
         } else {
-            NSTimeInterval time = self.audioPlayer2.currentTime - skipTime;
+            time = self.audioPlayer2.currentTime - skipTime;
             self.audioPlayer2.currentTime =  (time <= 0.0) ? 0.0 : time;
         }
     }
@@ -137,8 +139,8 @@ objection_requires(session)
 #pragma mark Helpers
 
 - (NSString *)noteKeyForTrack:(TrackNumber)track {
-    //TODO: Find stronger key
-    return (track == TrackOne) ? self.session.firstTrack.title : self.session.secondTrack.title;
+    //assetURL.relativeString = [media valueForProperty: MPMediaItemPropertyAssetURL]
+    return (track == TrackOne) ? self.session.firstTrack.assetURL.relativeString : self.session.secondTrack.assetURL.relativeString;
 }
 
 - (void)setCurrentTrack:(TrackNumber)currentTrack {
